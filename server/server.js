@@ -3,19 +3,20 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(express.json());
-const port =  5000;
+require("dotenv").config({ path: "../config.env"}); //dotenv is used to access .env variables in a file
+const PORT =  process.env.PORT;
 //mongoose.connect("mongodb+srv://brennakj3:f2*96xYpCtbR%40yT@cs35l-final-project.d0cgy5p.mongodb.net/?retryWrites=true&w=majority");
 
 // Connection URI
 const uri = "mongodb+srv://brennakj3:f2*96xYpCtbR%40yT@cs35l-final-project.d0cgy5p.mongodb.net/?retryWrites=true&w=majority";
 //Connect and check connection using mongoose
-mongoose.connect(uri, {
+mongoose.connect(process.env.DB_URI, {
 }).catch(err => console.log(err.reason));  //according to mongoose documentation this will output what the error was, doesnt really work
 
 mongoose.connection.on('connected', ()=>{
     console.log("Database connection successful")
 });
-console.log(`Server is running on port: ${port}`);
+console.log(`Server is running on port: ${PORT}`);
 
 
 
