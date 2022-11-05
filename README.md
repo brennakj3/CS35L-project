@@ -24,9 +24,10 @@ Note: If your password contains the characters : / ? # [ ] @ they will have to b
 
 ### Setting up project for the first time: ###
 
-Go to frontend directory and run: 
+Inside the project, run: 
   
 ```
+cd frontend
 npm install
 ```
   
@@ -39,7 +40,7 @@ npm install mongoose bootstrap cors express dotenv
 ### To test your connection: ###
   
 ```
-cd server.js
+cd server
 node server.js
 ```
   
