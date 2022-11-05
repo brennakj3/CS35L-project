@@ -2,7 +2,7 @@
 Web application for reviewing and ranking UCLA dining halls
 
 
-Setting up MongoDB:
+### Setting up MongoDB: ###
 
 Make sure you've cloned the repository onto your local device. Log into MongoDB Atlas (in browser). Find the database called CS35L Project. Go to database access and add yourself as a user (use something random for the password, don't use any of your actual passwords).
 
@@ -22,7 +22,7 @@ Your connection string should be the one you copied from MongoDB online; make su
 
 Note: If your password contains the characters : / ? # [ ] @ they will have to be percent-encoded (replace ':' with %3A, '/' with %2F, '#' with %23, '[' with %5B, ']' with %5D, '@' with %40)
 
-Setting up frontend:
+### Setting up project for the first time: ###
 
 Go to frontend directory and run: 
   
@@ -30,11 +30,17 @@ Go to frontend directory and run:
 npm install
 ```
   
-To test your connection:
+On your first time creating the clone, you will need to install some tools this project uses. Make sure to run this in your root directory:
+
+```
+npm install mongoose bootstrap cors express dotenv
+```
+  
+### To test your connection: ###
   
 ```
 cd server.js
 node server.js
 ```
   
-You should see "Database connection successful" and "Connected to port 5000"
+You should see "Database connection successful" and "Server is running on port: 5000"
