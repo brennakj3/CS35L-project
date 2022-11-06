@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -15,7 +14,7 @@ function Review({}){
     });
 
     function handleReviewChange(event){
-        const {name, type, value, checked} = event.target;
+        const {name, value} = event.target;
 
         setReviewData(prevData=> ({
 

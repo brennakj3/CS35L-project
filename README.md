@@ -10,7 +10,7 @@ Go back to the database tab, click connect, and then connect your application.
 
 Copy the connection string starting with "mongodb+srv://username:<password>"...
 
-In the root of the cloned directory, create a file called config.env. Add these 2 lines to config.env:
+In the root of the project directory, create a file called config.env. Add these 2 lines to config.env:
 
 ```
 PORT=5000
@@ -24,23 +24,18 @@ Note: If your password contains the characters : / ? # [ ] @ they will have to b
 
 ### Setting up project for the first time: ###
 
-Inside the project, run: 
+Inside the root directory of the project, run: 
   
 ```
 cd frontend
 npm install
 ```
 
-### Testing your connection: ###
-
-Go back to the root directory and run:
-
+After you have installed the frontend, run:
 ```
-cd server
-node server.js
+cd ..
+npm install
 ```
-  
-You should see "Database connection successful" and "Server is running on port: 5000"
 
 ### Running the project: ###
 
@@ -50,6 +45,8 @@ Open a terminal. Go to the root directory and run:
 cd server
 node server.js
 ```
+
+You should see "Database connection successful" and "Server is running on port: 5000"
 
 Open a second terminal. In this terminal, go to the root directory and run:
 
