@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+//import app from '../../../server/server';
+import Review from './components/Review/index';
 
+import { useEffect } from 'react';
 function App() {
+    //const [reviews, setReviews] = useState([]);
+    
+    /* Some useEffect that handles fetching all reviews
+    useEffect(()=>{
+      
+    });
+    */
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Review  />
     </div>
   );
 }

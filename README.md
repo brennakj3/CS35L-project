@@ -34,7 +34,7 @@ npm install
 On your first time creating the clone, you will need to install some tools this project uses. Make sure to run this in your root directory:
 
 ```
-npm install mongoose bootstrap cors express dotenv
+npm install mongoose bootstrap cors express dotenv body-parser
 ```
   
 ### To test your connection: ###
