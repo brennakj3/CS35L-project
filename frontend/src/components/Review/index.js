@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import styles from './styles.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function Review({}){
     const [reviewData, setReviewData] = useState({
@@ -10,18 +14,16 @@ function Review({}){
     });
 
     function handleReviewChange(event){
-        const {name, type, value, checked} = event.target;
+        const {name, value} = event.target;
 
         setReviewData(prevData=> ({
 
             ...prevData,
-            [name]: type ==="checkbox" ? checked : value,
+            [name]: value,
             
         }));
         console.log(reviewData);
     };
-
-
     async function handlePost(event){
     //this will include some fetch/post request for updating database
     event.preventDefault();
@@ -33,61 +35,39 @@ function Review({}){
     };
     const response = await fetch('http://localhost:5000/createReview', input);
     const data = await response.json();
-    //data might be used to update something to the screen
-    console.log(data);
+    //data might be used to update something to the screen eventually
+    console.log(data);  //outputs to console for debugging
     }
-    //NOTE: the buttons currently aren't recording the correct dining hall, plan to change to dropdown menu anyway so its okay
-    return(
-        
-      <form>
-        <label htmlFor="review">Review</label><br/>
-        <textarea
-          type="text"
-          name="body"
-          id="review"
-          onChange={handleReviewChange}
-          placeholder="Start your review here..."
-          value={reviewData.body}
-          className={styles["text-input"]}
-        />
-    
-        <fieldset className={styles["selection-box"]}>
-            <legend>Dining Hall</legend>
-            <input 
-          type="radio"
-          name="diningHall"
-          value="De Neve"
-          checked={reviewData.diningHall === "De Neve"}
-          onChange={handleReviewChange}
-          className={styles["radio-input"]}
-        />
-        <label htmlFor="type">De Neve</label>
-        <br />
-        
-        <input 
-          type="radio"
-          name="diningHall"
-          value="Bruin Plate"
-          checked={reviewData.diningHall === "Bruin Plate"}
-          onChange={handleReviewChange}
-          className={styles["radio-input"]}
-        />
-        <label htmlFor="Bruin Plate">Bruin Plate</label>
-        <br />
-        
-        <input 
-          type="radio"
-          name="diningHall"
-          value="Epicuria"
-          checked={reviewData.diningHall === "Epicuria"}
-          onChange={handleReviewChange}
-          className={styles["radio-input"]}
-        />
-        <label htmlFor="Epicuria">Epicuria</label>
-        <br />
-        </fieldset>
-        <button className={styles["post-button"]} onClick={handlePost}>Post</button>
-      </form>
+    //TODO: Need to implement star ranking, might want to install another package for that (mdbreact maybe)
+    // Need to fix styling, text box and option select shouldn't fill page
+    return (
+      <>
+      <Form>
+        <Form.Group controlID="reviewText">
+          <Form.Label>Review</Form.Label>
+          <Form.Control as="textarea" rows={3}
+            name="body"
+            id="review"
+            onChange={handleReviewChange}
+            placeholder="Start your review here..."
+            value={reviewData.body}/>
+        </Form.Group>
+        <Form.Group controlID="diningSelect">
+          <Form.Label>Dining Hall</Form.Label>
+          <Form.Control as="select" name="diningHall" onChange={handleReviewChange}>
+            <option value="De Neve">De Neve</option>
+            <option value="Bruin Plate">Bruin Plate</option>
+            <option value="Epicuria">Epicuria</option>   
+          </Form.Control>
+        </Form.Group>
+      <Button variant="primary" onClick={handlePost}>Post</Button>
+      </Form>
+      </>
     );
 }
+
+
+
+
+
 export default Review;
