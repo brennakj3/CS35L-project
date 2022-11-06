@@ -30,18 +30,32 @@ Inside the project, run:
 cd frontend
 npm install
 ```
-  
-On your first time creating the clone, you will need to install some tools this project uses. Make sure to run this in your root directory:
 
-```
-npm install mongoose bootstrap cors express dotenv body-parser
-```
-  
-### To test your connection: ###
-  
+### Testing your connection: ###
+
+Go back to the root directory and run:
+
 ```
 cd server
 node server.js
 ```
   
 You should see "Database connection successful" and "Server is running on port: 5000"
+
+### Running the project: ###
+
+Open a terminal. Go to the root directory and run:
+
+```
+cd server
+node server.js
+```
+
+Open a second terminal. In this terminal, go to the root directory and run:
+
+```
+cd frontend
+npm start
+```
+
+Note: The server has to be running while the React app is open in order to access the MongoDB database.
