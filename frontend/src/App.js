@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import app from '../../../server/server';
-import Review from './components/Review/index';
+import ReviewForm from './components/ReviewForm';
 import TopNavbar from './components/Navbar';
+import DeNeve from './components/DeNeve'
 
 import { useEffect } from 'react';
 
@@ -25,9 +26,14 @@ function App() {
   //TODO: Add routing to other pages, currently navbar doesn't go anywhere
   //Probably will need to install react-router-dom for routing
   return (
-    <div className="App">
-      <TopNavbar /> 
-      <Review />
+    <div>
+    <TopNavbar /> 
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<ReviewForm />} />
+        <Route path="/de_neve" element={<DeNeve />} />
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }

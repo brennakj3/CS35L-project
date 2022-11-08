@@ -1,10 +1,25 @@
 const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
-    user: String,
-    body: String,
-    diningHall: String,
-    stars: {type: Number, min: 0, max:5}
+    user: {
+        type: String,
+        
+        default:""
+    },
+    body: {
+        type: String,
+        default:""
+    },
+    diningHall: {
+        type: String,
+        default:""
+    },
+    rating: {
+        type: Number, 
+        min: 0, 
+        max:5,
+        default:0
+    }
 });
 const Review = mongoose.model("Review", reviewSchema);
 module.exports = Review;

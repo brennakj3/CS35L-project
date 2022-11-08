@@ -36,11 +36,23 @@ app.get('/getReviews', async (req, res) => {
     }
 
 });
+app.get('/getReviews/:diningHall', async (req, res) => {
+   
+    const reviews = await reviewModel.find({diningHall: req.params.diningHall}); //finding all reviews by Dining Hall
+    try {
+        res.send(reviews);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+
+});
+
 app.post('/createReview', async (req, res) => {
     const review = new reviewModel({
+        user: req.body.user,
         body: req.body.body,
         diningHall: req.body.diningHall,
-        ranking: req.body.ranking,
+        rating: req.body.rating,
     }); //this might be to be split up more specifically
     try {
         await review.save();
