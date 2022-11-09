@@ -42,7 +42,11 @@ function ReviewForm({}){
     const data = await response.json();
     //data might be used to update something to the screen eventually
     console.log(data);  //outputs to console for debugging
+
+    //TODO: reset form and give user a notification their review was posted
     }
+
+
     //TODO: Need to implement star ranking, might want to install another package for that (mdbreact maybe)
     // Need to fix styling, text box and option select shouldn't fill page
     return (

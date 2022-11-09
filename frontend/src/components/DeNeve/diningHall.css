@@ -1,0 +1,16 @@
+.post{
+    width: 500px;
+    height: fit-content;
+    border: 2px solid rgb(134, 133, 133);
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    text-align: left;
+    padding: 5px;
+    
+    
+}
+.title{
+    text-align: center;
+}

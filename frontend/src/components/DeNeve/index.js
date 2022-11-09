@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 //want this to display some information about the dining hall 
 //and display all reviews for De Neve
 //Might be able to clean up Dining Hall pages so they are all one component eventually
-//import Review from '../Review';
+import './diningHall.css'
 
 function Review(props){
     return(
-      <tr>
-        <td>{props.review.user}</td>
-        <td>{props.review.body}</td>
-        <td>{props.review.diningHall}</td>
-        <td>{props.review.rating}</td>
-      </tr>
+      <div className="post">
+        <h6>{props.review.user}</h6>
+        <h6>{props.review.rating} stars</h6>
+          <p>{props.review.body}</p>
+      </div>
+
+
     );
   
 }
@@ -53,18 +54,9 @@ function allReviews(){
 
 return(
     <div>
-    <h3>Reviews</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>Username</th>
-           <th>Review</th>
-           <th>Dining Hall</th>
-           <th>Rating</th>
-         </tr>
-       </thead>
-       <tbody>{allReviews()}</tbody>
-     </table>
+      <h3 className="title">De Neve Reviews</h3>
+      <p>{allReviews()}</p>
+     
    </div>
 
 );
