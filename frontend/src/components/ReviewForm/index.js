@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+//react-bootstrap makes it easier to add pretty and functional components 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+/*ReviewForm is the form the user can fill out to make a new post */
 function ReviewForm({}){
-    const [reviewData, setReviewData] = useState({
-        //username: ""   --figure out how to retrieve username from current user 
+    const [reviewData, setReviewData] = useState({   
+      //setting up the states for a review, essentially its variables
         user:"",
         body:"",
         diningHall:"",
         rating:0
     });
-
+    //This just updates the states whenever something is changed
     function handleReviewChange(event){
         const {name, value} = event.target;
 
@@ -26,18 +27,20 @@ function ReviewForm({}){
         console.log(reviewData);
     };
     async function handlePost(event){
-    //this will include some fetch/post request for updating database
+    //This function communicates with the server to add a review to the database
     event.preventDefault();
     const newReview={
       user: reviewData.user,
       body: reviewData.body,
       diningHall: reviewData.diningHall,
       rating: reviewData.rating };
+        
     const input={
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newReview)
     };
+    //uses fetch to make a http request to the backend with our reviewData and some other input
     const response = await fetch('http://localhost:5000/createReview', input);
     const data = await response.json();
     //data might be used to update something to the screen eventually

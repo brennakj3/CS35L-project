@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//Model for diningHall, not sure if this will be necessary
 const diningSchema = new mongoose.Schema({
     name: String,
     description: String,

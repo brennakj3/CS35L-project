@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//Database Model for a Review
 const reviewSchema = new mongoose.Schema({
     user: {
         type: String,
