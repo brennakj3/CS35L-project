@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import app from '../../../server/server';
 import ReviewForm from './components/ReviewForm';
 import TopNavbar from './components/Navbar';
-import DeNeve from './components/DeNeve'
+import DeNeve from './components/DeNeve';
+import AccountLogin from './components/AccountLogin';
 
 import { useEffect } from 'react';
 
@@ -22,6 +23,7 @@ function App() {
     });
     */
 
+    
 
   //TODO: Add routing to other pages, currently navbar doesn't go anywhere
   //Probably will need to install react-router-dom for routing
@@ -32,6 +34,7 @@ function App() {
     <Routes>
         <Route path="/" element={<ReviewForm />} />
         <Route path="/de_neve" element={<DeNeve />} />
+        <Route path="/login" element={<AccountLogin/>} />
     </Routes>
     </BrowserRouter>
     </div>
