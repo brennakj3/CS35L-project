@@ -9,9 +9,12 @@ import Form from 'react-bootstrap/Form';
 // TO DO: maybe blur out password characters for security purposes 
 
 
-function AccountLogin(){
+function AccountLogin({}){
     const [loginData, setLoginData] = useState ({
-        user:""
+        user:"",
+        pass:"",
+        newuser:"",
+        newpass: ""
     });
 
     function handleLoginChange(event)
@@ -31,7 +34,22 @@ function AccountLogin(){
     async function handleLogin(event){};
 
     // TO DO: should store new username and password in database
-    async function handleSignUp(event){};
+    async function handleSignUp(event){
+        event.preventDefault();
+        const newUser={
+            user: loginData.newuser,
+            pass: loginData.newpass
+        };
+        const input={
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newUser)
+        };
+        const response = await fetch('http://localhost:5000/createUser', input);
+        const data = await response.json();
+
+        console.log(data);
+    };
 
     return(
         <div>
