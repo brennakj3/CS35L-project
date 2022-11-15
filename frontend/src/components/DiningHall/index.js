@@ -56,11 +56,9 @@ function DiningHall(props){
 //Maps all reviews obtained from the database into their own Review component
 function allReviews(){
     return reviews.map((review)=>{
-       
         return(
             <Review review= {review} />
         );
-        
 
     });
 }

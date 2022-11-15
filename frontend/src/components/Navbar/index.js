@@ -17,7 +17,7 @@ function TopNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>  
-            <Nav.Link href="/">Write A Review</Nav.Link>
+            <Nav.Link href="/review">Write A Review</Nav.Link>
             <NavDropdown title="Dining Halls" id="basic-nav-dropdown">
               <NavDropdown.Item href="/de_neve">De Neve</NavDropdown.Item>
               <NavDropdown.Item href="/bruin_plate">Bruin Plate</NavDropdown.Item>

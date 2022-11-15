@@ -18,7 +18,8 @@ function App() {
     <TopNavbar /> 
     <BrowserRouter>
     <Routes>
-        <Route path="/" element={<ReviewForm />} />
+        <Route path="/" />
+        <Route path="/review" element={<ReviewForm />} />
         <Route path="/de_neve" element={<DiningHall name = "De Neve" />} /> 
         <Route path="/epicuria" element={<DiningHall name = "Epicuria" />} /> 
         <Route path="/bruin_plate" element={<DiningHall name = "Bruin Plate" />} /> 

@@ -6,31 +6,31 @@ import Form from 'react-bootstrap/Form';
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
-/*TODO: reset form and give user a notification their review was posted 
+/*TODO: g ive user a notification their review was posted 
 Need to implement star ranking, might want to install another package for that (mdbreact maybe)
 Need to fix styling, text box and option select shouldn't fill page 
 Need to implement actually signup/login, then add username being retrieved from current user*/
 function ReviewForm({}){
-    const [reviewData, setReviewData] = useState({   
+  const [reviewData, setReviewData] = useState({   
       //setting up the states for a review, essentially its variables
-        user:"",
-        body:"",
-        diningHall:"",
-        rating:0
-    });
+     user:"",
+    body:"",
+    diningHall:"De Neve", //this is default because dropdown is originally on De Neve
+    rating:1
+  });
     //This just updates the states whenever something is changed
-    function handleReviewChange(event){
-        const {name, value} = event.target;
+  function handleReviewChange(event){
+    const {name, value} = event.target;
 
-        setReviewData(prevData=> ({
+    setReviewData(prevData=> ({
 
-            ...prevData,
-            [name]: value,
+      ...prevData,
+      [name]: value,
             
-        }));
-        console.log(reviewData);
-    };
-    async function handlePost(event){
+      }));
+      console.log(reviewData);
+  };
+  async function handlePost(event){
     //This function communicates with the server to add a review to the database
     event.preventDefault();
     const newReview={
@@ -40,20 +40,25 @@ function ReviewForm({}){
       rating: reviewData.rating };
         
     const input={
-        method:'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(newReview)
+      method:'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newReview)
     };
     //uses fetch to make a http request to the backend with our reviewData and some other input
     const response = await fetch('http://localhost:5000/createReview', input);
     const data = await response.json();
     //data might be used to update something to the screen eventually
     console.log(data);  //outputs to console for debugging
+    const blankForm ={
+      user: "",
+      body: "",
+      diningHall:"De Neve",
+      rating: 1
+    };
+    setReviewData(blankForm); //Add something to notify user their form was sent 
+  }
 
-    
-    }
-
-
+ 
     
     return (
       <>
