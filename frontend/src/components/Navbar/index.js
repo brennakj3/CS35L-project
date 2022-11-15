@@ -23,6 +23,7 @@ function TopNavbar() {
               <NavDropdown.Item href="/bruin_plate">Bruin Plate</NavDropdown.Item>
               <NavDropdown.Item href="/epicuria">Epicuria</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

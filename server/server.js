@@ -64,7 +64,27 @@ app.post('/createReview', async (req, res) => {
         res.status(500).send(error);
     }
 });
+
+
+
+app.post('/createUser', async (req, res) => {
+    const user = new userModel({
+        user: req.body.user,
+        pass: req.body.pass,
+    });
+    try {
+        await user.save();
+        res.send(user);
+    }
+        catch(error){
+            res.status(500).send(error);
+        }
+    });
+    
+    
+
 //Ensures router is listening
+
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}`);
 });

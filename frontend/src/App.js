@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ReviewForm from './components/ReviewForm';
 import TopNavbar from './components/Navbar';
-import DeNeve from './components/DeNeve'
+import DeNeve from './components/DeNeve';
+import AccountLogin from './components/AccountLogin';
 
 //App handles all major routing to other webpages to display React pages
 
@@ -25,7 +26,8 @@ function App() {
     <BrowserRouter>
     <Routes>
         <Route path="/" element={<ReviewForm />} />
-        <Route path="/de_neve" element={<DeNeve />} />  
+        <Route path="/de_neve" element={<DeNeve />} />
+        <Route path="/login" element={<AccountLogin/>} />
     </Routes>
     </BrowserRouter>
     </div>
