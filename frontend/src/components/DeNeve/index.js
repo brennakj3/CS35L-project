@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react"; 
 //want this to display some information about the dining hall 
 //and display all reviews for De Neve
-//Might be able to clean up Dining Hall pages so they are all one component eventually
-//import Review from '../Review';
+//TODO: Change this to a component for all 3 dining halls, where just title and which reviews show changes
+import './diningHall.css'
 
+//This Review function just handles how each review displays
 function Review(props){
     return(
-      <tr>
-        <td>{props.review.user}</td>
-        <td>{props.review.body}</td>
-        <td>{props.review.diningHall}</td>
-        <td>{props.review.rating}</td>
-      </tr>
+      <div className="post">
+        <h6>{props.review.user}</h6>
+        <h6>{props.review.rating} stars</h6>
+          <p>{props.review.body}</p>
+      </div>
+
+
     );
   
 }
@@ -19,11 +21,13 @@ function Review(props){
 function DeNeve(){
     const [reviews, setReviews] = useState([]);
 
+    //This useEffect gets all reviews with dining hall: De Neve and sets De Neve's reviews to all of them
   useEffect(()=> {
     async function getReviews() {
         const input=  "De Neve";
+        //makes http request to server to get all the De Neve reviews from the database
         const response = await fetch(`http://localhost:5000/getReviews/${input}`);
-        //might need to include some feedback for a fetching error 
+        //some feedback for a fetching error 
         if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
             console.log(message);
@@ -31,8 +35,8 @@ function DeNeve(){
           }
        
         const reviews = await response.json();
-        console.log(reviews); //thinks reviews just returned nothing
-        setReviews(reviews);
+        console.log(reviews); //used for debugging
+        setReviews(reviews); //sets reviews to reviews obtained from database
 
 
     }
@@ -40,6 +44,7 @@ function DeNeve(){
 
 }, []);
 
+//Maps all reviews obtained from the database into their own Review component
 function allReviews(){
     return reviews.map((review)=>{
        
@@ -51,20 +56,12 @@ function allReviews(){
     });
 }
 
+//Displays all of the components onto the page
 return(
     <div>
-    <h3>Reviews</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>Username</th>
-           <th>Review</th>
-           <th>Dining Hall</th>
-           <th>Rating</th>
-         </tr>
-       </thead>
-       <tbody>{allReviews()}</tbody>
-     </table>
+      <h3 className="title">De Neve Reviews</h3>
+      <p>{allReviews()}</p>
+     
    </div>
 
 );

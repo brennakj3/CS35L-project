@@ -8,6 +8,7 @@ app.use(cors());
 require("dotenv").config({ path: "../config.env"}); //dotenv is used to access .env variables in a file
 const PORT =  process.env.PORT;
 
+//This connects to MongoDB server
 mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -20,13 +21,14 @@ mongoose.connection.on('connected', ()=>{
     console.log("Database connection successful")
 });
 
-
+//Importing the models for the MongoDB database
 const reviewModel = require("./schema/review");
 const userModel = require("./schema/user");
 const diningModel = require("./schema/restaurant");
 const  response  = require("express");
 
 //Some basic route methods from express documentation page, each one should access some mongoose model and do something to it to edit database
+//React frontend makes a http request and then the server sees it and responds with one of these actions
 app.get('/getReviews', async (req, res) => {
     const reviews = await reviewModel.find({}); //finding all reviews 
     try {
@@ -36,6 +38,7 @@ app.get('/getReviews', async (req, res) => {
     }
 
 });
+//Fetching all reviews for a particular dining hall
 app.get('/getReviews/:diningHall', async (req, res) => {
    
     const reviews = await reviewModel.find({diningHall: req.params.diningHall}); //finding all reviews by Dining Hall
@@ -46,7 +49,7 @@ app.get('/getReviews/:diningHall', async (req, res) => {
     }
 
 });
-
+//Creating a review and adding it to database
 app.post('/createReview', async (req, res) => {
     const review = new reviewModel({
         user: req.body.user,
@@ -61,6 +64,7 @@ app.post('/createReview', async (req, res) => {
         res.status(500).send(error);
     }
 });
+
 
 
 app.post('/createUser', async (req, res) => {
@@ -78,6 +82,9 @@ app.post('/createUser', async (req, res) => {
     });
     
     
+
+//Ensures router is listening
+
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}`);
 });
