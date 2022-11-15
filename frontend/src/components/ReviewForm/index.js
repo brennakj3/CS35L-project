@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 //react-bootstrap makes it easier to add pretty and functional components 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 /*ReviewForm is the form the user can fill out to make a new post */
+/*TODO: reset form and give user a notification their review was posted 
+Need to implement star ranking, might want to install another package for that (mdbreact maybe)
+Need to fix styling, text box and option select shouldn't fill page 
+Need to implement actually signup/login, then add username being retrieved from current user*/
 function ReviewForm({}){
     const [reviewData, setReviewData] = useState({   
       //setting up the states for a review, essentially its variables
@@ -46,12 +50,11 @@ function ReviewForm({}){
     //data might be used to update something to the screen eventually
     console.log(data);  //outputs to console for debugging
 
-    //TODO: reset form and give user a notification their review was posted
+    
     }
 
 
-    //TODO: Need to implement star ranking, might want to install another package for that (mdbreact maybe)
-    // Need to fix styling, text box and option select shouldn't fill page
+    
     return (
       <>
       <Form>

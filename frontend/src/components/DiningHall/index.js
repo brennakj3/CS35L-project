@@ -18,13 +18,13 @@ function Review(props){
   
 }
 
-function DeNeve(){
+function DiningHall(props){
     const [reviews, setReviews] = useState([]);
-
+    
     //This useEffect gets all reviews with dining hall: De Neve and sets De Neve's reviews to all of them
   useEffect(()=> {
     async function getReviews() {
-        const input=  "De Neve";
+        const input=  props.name;
         //makes http request to server to get all the De Neve reviews from the database
         const response = await fetch(`http://localhost:5000/getReviews/${input}`);
         //some feedback for a fetching error 
@@ -59,11 +59,11 @@ function allReviews(){
 //Displays all of the components onto the page
 return(
     <div>
-      <h3 className="title">De Neve Reviews</h3>
+      <h3 className="title">{props.name} Reviews</h3>
       <p>{allReviews()}</p>
      
    </div>
 
 );
 }
-export default DeNeve;
+export default DiningHall;
