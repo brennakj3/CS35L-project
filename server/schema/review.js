@@ -16,9 +16,9 @@ const reviewSchema = new mongoose.Schema({
     },
     rating: {
         type: Number, 
-        min: 0, 
+        min: 1, 
         max:5,
-        default:0
+        default:1
     }
 });
 const Review = mongoose.model("Review", reviewSchema);

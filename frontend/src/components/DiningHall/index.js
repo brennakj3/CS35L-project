@@ -19,13 +19,16 @@ function Review(props){
 }
 
 function DiningHall(props){
+    const {name} = props;
+    var totalRatings =0;
+    var numReviews=0;
     const [reviews, setReviews] = useState([]);
-    
-    //This useEffect gets all reviews with dining hall: De Neve and sets De Neve's reviews to all of them
+    var [averageRating, setAverageRating] =useState([]);
+    //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
   useEffect(()=> {
     async function getReviews() {
-        const input=  props.name;
-        //makes http request to server to get all the De Neve reviews from the database
+        const input=  name;
+        //makes http request to server to get all the dining hall reviews from this dining hall from the database
         const response = await fetch(`http://localhost:5000/getReviews/${input}`);
         //some feedback for a fetching error 
         if (!response.ok) {
@@ -37,11 +40,17 @@ function DiningHall(props){
         const reviews = await response.json();
         console.log(reviews); //used for debugging
         setReviews(reviews); //sets reviews to reviews obtained from database
-
-
+        reviews.map((review) =>{
+          totalRatings+= review.rating;  //check if this works 
+          numReviews+=1;
+          let roundedAverage = (totalRatings/numReviews)*2;
+          roundedAverage= Math.round(roundedAverage)/2;  //rounds number to the nearest .5
+          setAverageRating(roundedAverage);
+        })
+      
     }
     getReviews();
-
+    
 }, []);
 
 //Maps all reviews obtained from the database into their own Review component
@@ -56,11 +65,15 @@ function allReviews(){
     });
 }
 
+
 //Displays all of the components onto the page
 return(
     <div>
-      <h3 className="title">{props.name} Reviews</h3>
+      
+      <h3 className="title">{name} Reviews</h3>
+      <h4>Overall Rating: {averageRating} Stars </h4>
       <p>{allReviews()}</p>
+      
      
    </div>
 
