@@ -25,7 +25,7 @@ mongoose.connection.on('connected', ()=>{
 const reviewModel = require("./schema/review");
 const userModel = require("./schema/user");
 const diningModel = require("./schema/restaurant");
-const  response  = require("express");
+const response  = require("express");
 
 //Some basic route methods from express documentation page, each one should access some mongoose model and do something to it to edit database
 //React frontend makes a http request and then the server sees it and responds with one of these actions
@@ -49,6 +49,20 @@ app.get('/getReviews/:diningHall', async (req, res) => {
     }
 
 });
+
+// Gets account info
+app.get('/getUser/:user', async (req,res) => {
+    console.log("test");
+    const user = await userModel.find({user: req.params.user});
+    try{
+        res.send(user);
+    }
+    catch(error){
+        res.status(500).send(error);
+    }
+});
+
+
 //Creating a review and adding it to database
 app.post('/createReview', async (req, res) => {
     const review = new reviewModel({
@@ -65,8 +79,7 @@ app.post('/createReview', async (req, res) => {
     }
 });
 
-
-
+// Creates a new user profile
 app.post('/createUser', async (req, res) => {
     const user = new userModel({
         user: req.body.user,

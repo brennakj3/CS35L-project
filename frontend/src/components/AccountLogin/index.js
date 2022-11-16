@@ -31,7 +31,38 @@ function AccountLogin({}){
     }
 
     // TO DO: should check if username and password is in database
-    async function handleLogin(event){};
+    async function handleLogin(event){
+        const input = loginData.user;
+        const response = await fetch(`http://localhost:5000/getUser/${input}`);
+        const data = await response.json();
+
+        if( data.length == 1)
+        {
+            const thisUser = data[0];
+            if(thisUser.pass == loginData.pass)
+            {
+                console.log("Success");
+            }
+            else
+            {
+                console.log("Incorrect Password");    
+            }
+        }
+        else
+        {
+            console.log("Invalid Username");
+        }
+
+    };
+
+    async function checkNewUser(user)
+    {
+        const input = user; 
+        const response = await fetch(`http://localhost:5000/getUser/${input}`);
+        const data = await response.json();
+        return data.length; 
+
+    }
 
     // TO DO: should store new username and password in database
     async function handleSignUp(event){
@@ -45,10 +76,19 @@ function AccountLogin({}){
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newUser)
         };
-        const response = await fetch('http://localhost:5000/createUser', input);
-        const data = await response.json();
 
-        console.log(data);
+        // finds number of accounts with that name
+        var num = await checkNewUser(loginData.newuser);
+
+        if( num == 0)
+        {
+            const response = await fetch('http://localhost:5000/createUser', input);
+            const data = await response.json();
+        }
+        else
+        {
+            console.log("Username taken")
+        }
     };
 
     return(
