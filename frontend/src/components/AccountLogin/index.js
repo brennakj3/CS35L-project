@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 
 // this is just the oversimplified front end of the login page, will do more later
-// TO DO: the async functions, righ now they do nothing 
 // TO DO: maybe blur out password characters for security purposes 
 
 
@@ -37,6 +36,8 @@ function AccountLogin({}){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    var [title, setTitle] =useState([]);
+    var [body, setBody] =useState([]);
 
     //checks if username and password are valid
     async function handleLogin(event){
@@ -50,17 +51,23 @@ function AccountLogin({}){
             if(thisUser.pass === loginData.pass)
             {
                 console.log("Success");
+                setTitle("Welcome");
+                setBody("");
                 handleShow(); 
             }
             else
             {
                 console.log("Incorrect Password");    
+                setTitle("Incorrect Password");
+                setBody("Please try again");
                 handleShow(); 
             }
         }
         else
         {
             console.log("Invalid Username");
+            setTitle("Invalid Username");
+            setBody("Please try again");
             handleShow(); 
         }
 
@@ -96,14 +103,35 @@ function AccountLogin({}){
         {
             const response = await fetch('http://localhost:5000/createUser', input);
             const data = await response.json();
+            setTitle("Welcome");
+            setBody("");
             handleShow(); 
         }
         else
         {
             console.log("Username taken");
+            setTitle("Username taken");
+            setBody("Please try again");
             handleShow(); 
         }
     };
+
+    //for displaying popup messages
+    function messages(str)
+    {
+        if (str.localeCompare("title") === 0)
+        {
+            return title;
+        }
+        else if(str.localeCompare("body") === 0)
+        {
+            return body; 
+        }
+        else
+        {
+            return "error"; 
+        }
+    }
 
     return(
         <div>
@@ -154,10 +182,10 @@ function AccountLogin({}){
 
             <Modal show= {show} onHide= {handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title id="Title">Title</Modal.Title>
+                    <Modal.Title >{messages("title")}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p id="Body">Body</p>
+                    <p>{messages("body")}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose} >Close</Button>
@@ -165,5 +193,6 @@ function AccountLogin({}){
             </Modal>
         </div>
     );
+
 }
 export default AccountLogin;
