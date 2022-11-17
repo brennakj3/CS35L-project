@@ -42,6 +42,9 @@ function AccountLogin({}){
             if(thisUser.pass == loginData.pass)
             {
                 console.log("Success");
+                //logs user in by setting current user to that username
+                sessionStorage.setItem('user', thisUser.user); 
+                sessionStorage.setItem('userLoggedIn','true');
             }
             else
             {
@@ -83,8 +86,12 @@ function AccountLogin({}){
         if( num == 0)
         {
             const response = await fetch('http://localhost:5000/createUser', input);
-            const data = await response.json();
+            const data = await response.json();  
+            sessionStorage.setItem('user', JSON.stringify(newUser.user)); //not sure if data.name is a string, might need to stringify
+            //other components should be able to check if the user is logged in and get their name with getItem
+            sessionStorage.setItem('userLoggedIn','true');
         }
+
         else
         {
             console.log("Username taken")
