@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //react-bootstrap makes it easier to add pretty and functional components 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
@@ -13,11 +14,11 @@ Need to implement actually signup/login, then add username being retrieved from 
 function ReviewForm({}){
   const [reviewData, setReviewData] = useState({   
       //setting up the states for a review, essentially its variables
-     user:"",
     body:"",
     diningHall:"De Neve", //this is default because dropdown is originally on De Neve
     rating:1
   });
+  const [showLoginModal, setShowLoginModal] = useState(false);
     //This just updates the states whenever something is changed
   function handleReviewChange(event){
     const {name, value} = event.target;
@@ -30,11 +31,22 @@ function ReviewForm({}){
       }));
       console.log(reviewData);
   };
+
   async function handlePost(event){
+    const blankForm ={
+      body: "",
+      diningHall:"De Neve",
+      rating: 1
+    };
+    if (sessionStorage.getItem('userLoggedIn')=='false'){
+      setShowLoginModal(true);
+      setReviewData(blankForm);
+      return;
+    }
     //This function communicates with the server to add a review to the database
     event.preventDefault();
     const newReview={
-      user: reviewData.user,
+      user: sessionStorage.getItem('user'), //looks at current user logged in for username
       body: reviewData.body,
       diningHall: reviewData.diningHall,
       rating: reviewData.rating };
@@ -49,28 +61,40 @@ function ReviewForm({}){
     const data = await response.json();
     //data might be used to update something to the screen eventually
     console.log(data);  //outputs to console for debugging
-    const blankForm ={
-      user: "",
-      body: "",
-      diningHall:"De Neve",
-      rating: 1
-    };
+  
     setReviewData(blankForm); //Add something to notify user their form was sent 
   }
 
- 
+  function LoginModal(){
+    return (
+      <Modal show = {showLoginModal} onHide={()=>setShowLoginModal(false)} >
+        <Modal.Dialog>
+        <Modal.Header closeButton>
+          <Modal.Title>Create an account to post a review!</Modal.Title>
+        </Modal.Header>
+  
+        <Modal.Body>
+          <p>Log in or sign up before writing a review. </p>
+        </Modal.Body>
+  
+        </Modal.Dialog>
+      </Modal>
+  
+  
+    );
+  }
     
     return (
       <>
+      <LoginModal />
       <Form>
-        <Form.Group controlID="userText">
-          <Form.Label>Username</Form.Label>
-          <Form.Control as="textarea" rows={1}
-            name="user"
-            id="username"
-            onChange={handleReviewChange}
-            placeholder="Username"
-            value={reviewData.user}/>
+      <Form.Group controlID="diningSelect">
+          <Form.Label>Dining Hall</Form.Label>
+          <Form.Control as="select" name="diningHall" onChange={handleReviewChange}>
+            <option value="De Neve">De Neve</option>
+            <option value="Bruin Plate">Bruin Plate</option>
+            <option value="Epicuria">Epicuria</option>   
+          </Form.Control>
         </Form.Group>
         <Form.Group controlID="reviewText">
           <Form.Label>Review</Form.Label>
@@ -81,14 +105,7 @@ function ReviewForm({}){
             placeholder="Start your review here..."
             value={reviewData.body}/>
         </Form.Group>
-        <Form.Group controlID="diningSelect">
-          <Form.Label>Dining Hall</Form.Label>
-          <Form.Control as="select" name="diningHall" onChange={handleReviewChange}>
-            <option value="De Neve">De Neve</option>
-            <option value="Bruin Plate">Bruin Plate</option>
-            <option value="Epicuria">Epicuria</option>   
-          </Form.Control>
-        </Form.Group>
+        
         <Form.Group controlID="starSelect">
           <Form.Label>Rating</Form.Label>
           <Form.Control as="select" name="rating" onChange={handleReviewChange}>

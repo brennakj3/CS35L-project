@@ -20,8 +20,6 @@ function Review(props){
 
 function DiningHall(props){
     const {name} = props;
-    var totalRatings =0;
-    var numReviews=0;
     const [reviews, setReviews] = useState([]);
     var [averageRating, setAverageRating] =useState([]);
     //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
@@ -40,6 +38,8 @@ function DiningHall(props){
         const reviews = await response.json();
         console.log(reviews); //used for debugging
         setReviews(reviews); //sets reviews to reviews obtained from database
+        var totalRatings =0;
+        var numReviews=0;
         reviews.map((review) =>{
           totalRatings+= review.rating;  //check if this works 
           numReviews+=1;
