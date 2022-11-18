@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 
-// this is just the oversimplified front end of the login page, will do more later
+import './login.css'
+
 // TO DO: maybe blur out password characters for security purposes 
 
 
@@ -135,8 +136,9 @@ function AccountLogin({}){
 
     return(
         <div>
-            <h3>Login</h3>
+            <h3 className="headers">Login</h3>
             <Form>
+                <div class="side-buffer input-group mb-3 w-25">
             <Form.Group controlID="userText">
                 <Form.Label>Username</Form.Label>
                 <Form.Control as="textarea" rows={1}
@@ -155,10 +157,14 @@ function AccountLogin({}){
                    placeholder="Password"
                    value={loginData.pass}/>
             </Form.Group>
-            <Button variant="primary" onClick={handleLogin}>Login</Button>
+            </div>
+            <h3>    </h3> 
+            <Button class="side-buffer btn btn-primary" onClick={handleLogin}>Login</Button>
             </Form>
-        <h3>Sign Up</h3>
+        <h3>    </h3> 
+        <h3 className="headers">Sign Up</h3>
         <Form>
+        <div class="side-buffer input-group mb-3 w-25">
             <Form.Group controlID="userText">
                 <Form.Label>Username</Form.Label>
                 <Form.Control as="textarea" rows={1}
@@ -177,7 +183,9 @@ function AccountLogin({}){
                    placeholder="Password"
                    value={loginData.newpass}/>
             </Form.Group>
-            <Button variant="primary" onClick={handleSignUp}>SignUp</Button>
+            </div>
+            <h3>    </h3> 
+            <Button class="side-buffer btn btn-primary" onClick={handleSignUp}>SignUp</Button>
             </Form>
 
             <Modal show= {show} onHide= {handleClose}>
