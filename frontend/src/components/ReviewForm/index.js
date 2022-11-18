@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 import StarsRating from 'react-star-rate';
+//import { Alert } from 'bootstrap';
+import Alert from 'react-bootstrap/Alert';
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
@@ -21,6 +23,7 @@ function ReviewForm({}){
   });
   const [rating,setRating] = useState(1);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const[showPostAlert, setShowPostAlert] = useState(false);
     //This just updates the states whenever something is changed
   function handleReviewChange(event){
     const {name, value} = event.target;
@@ -63,7 +66,7 @@ function ReviewForm({}){
     const data = await response.json();
     //data might be used to update something to the screen eventually
     console.log(data);  //outputs to console for debugging
-  
+    setShowPostAlert(true);
     setReviewData(blankForm); //Add something to notify user their form was sent 
     setRating(1);
   }
@@ -80,13 +83,22 @@ function ReviewForm({}){
         </Modal.Header>
   
         <Modal.Body>
-          <p>Log in or sign up before writing a review. </p>
+          <p>
+          Log in or sign up before writing a review. </p>
         </Modal.Body>
   
         </Modal.Dialog>
       </Modal>
   
   
+    );
+  }
+  function PostAlert(){
+    return(
+      <Alert variant='success' show={showPostAlert} onClose={() => setShowPostAlert(false)} dismissible>
+        <Alert.Heading> Success!</Alert.Heading>
+        <p>Your review was successfully posted. </p>
+      </Alert>
     );
   }
     
@@ -121,6 +133,7 @@ function ReviewForm({}){
         </Form.Group>
       <Button variant="primary" onClick={handlePost}>Post</Button>
       </Form>
+      <PostAlert />
       </>
     );
 }
