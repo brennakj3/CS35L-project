@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
+import StarsRating from 'react-star-rate';
+
 
 /*ReviewForm is the form the user can fill out to make a new post */
 /*TODO: g ive user a notification their review was posted 
@@ -16,31 +18,31 @@ function ReviewForm({}){
       //setting up the states for a review, essentially its variables
     body:"",
     diningHall:"De Neve", //this is default because dropdown is originally on De Neve
-    rating:1
   });
+  const [rating,setRating] = useState(1);
   const [showLoginModal, setShowLoginModal] = useState(false);
     //This just updates the states whenever something is changed
   function handleReviewChange(event){
     const {name, value} = event.target;
-
+    
     setReviewData(prevData=> ({
 
       ...prevData,
       [name]: value,
             
       }));
-      console.log(reviewData);
+      console.log(reviewData); // for debugging
   };
 
   async function handlePost(event){
     const blankForm ={
       body: "",
       diningHall:"De Neve",
-      rating: 1
     };
     if (sessionStorage.getItem('userLoggedIn')=='false'){
       setShowLoginModal(true);
       setReviewData(blankForm);
+      setRating(1);
       return;
     }
     //This function communicates with the server to add a review to the database
@@ -49,7 +51,7 @@ function ReviewForm({}){
       user: sessionStorage.getItem('user'), //looks at current user logged in for username
       body: reviewData.body,
       diningHall: reviewData.diningHall,
-      rating: reviewData.rating };
+      rating: rating };
         
     const input={
       method:'POST',
@@ -63,7 +65,11 @@ function ReviewForm({}){
     console.log(data);  //outputs to console for debugging
   
     setReviewData(blankForm); //Add something to notify user their form was sent 
+    setRating(1);
   }
+  
+  
+  
 
   function LoginModal(){
     return (
@@ -107,21 +113,17 @@ function ReviewForm({}){
         </Form.Group>
         
         <Form.Group controlID="starSelect">
-          <Form.Label>Rating</Form.Label>
-          <Form.Control as="select" name="rating" onChange={handleReviewChange}>
-            <option value= "1">1 Star</option>
-            <option value="2">2 Stars</option>
-            <option value="3">3 Stars</option>  
-            <option value="4">4 Stars</option> 
-            <option value="5">5 Stars</option>  
-          </Form.Control>
+        <StarsRating 
+          value={rating}
+          allowHalf={false}
+          defaultValue={1}
+          onChange= {rating =>{setRating(rating); console.log(rating);}} />
         </Form.Group>
       <Button variant="primary" onClick={handlePost}>Post</Button>
       </Form>
       </>
     );
 }
-
 
 
 
