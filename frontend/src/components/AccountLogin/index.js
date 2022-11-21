@@ -149,6 +149,7 @@ function AccountLogin({}){
         }
     }
 
+    // switching to account page once logged in 
     function switchPage(event)
     {
         handleClose();
@@ -157,6 +158,22 @@ function AccountLogin({}){
             window.location.href = "/account";
         }
     }
+ 
+    // censor password button for login
+    const [passShown, setPassShown] = useState(false); 
+    const censorPass = () => 
+    {
+        setPassShown(!passShown);
+        console.log(passShown);
+    };
+
+    // censor password button for sign-up
+    const [supassShown, susetPassShown] = useState(false); 
+    const sucensorPass = () => 
+    {
+        susetPassShown(!supassShown);
+        console.log(supassShown);
+    };
 
     return(
         <div>
@@ -174,12 +191,16 @@ function AccountLogin({}){
             </Form.Group>
             <Form.Group controlID="passText">
                 <Form.Label>Password</Form.Label>
+                <div class="input-group mb-3">
                 <Form.Control as="textarea" rows={1}
                    name="pass"
                    id="password"
                    onChange={handleLoginChange}
                    placeholder="Password"
                    value={loginData.pass}/>
+                   <Button variant ="outline-secondary" onClick={censorPass}> <img src=" https://static-00.iconduck.com/assets.00/eye-password-hide-icon-512x512-iv45hct9.png" height="15" width ="15" alt=""/>
+                        </Button>
+                </div>
             </Form.Group>
             </div>
             <h3>    </h3> 
@@ -200,12 +221,16 @@ function AccountLogin({}){
             </Form.Group>
             <Form.Group controlID="passText">
                 <Form.Label>Password</Form.Label>
+                <div class="input-group mb-3">
                 <Form.Control as="textarea" rows={1}
                    name="newpass"
                    id="newpassword"
                    onChange={handleLoginChange}
                    placeholder="Password"
                    value={loginData.newpass}/>
+                        <Button variant="outline-secondary" onClick={sucensorPass}> <img src=" https://static-00.iconduck.com/assets.00/eye-password-hide-icon-512x512-iv45hct9.png" height="15" width ="15" alt=""/>
+                        </Button>
+                </div>
             </Form.Group>
             </div>
             <h3>    </h3> 
