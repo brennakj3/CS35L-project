@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"; 
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
@@ -148,6 +149,15 @@ function AccountLogin({}){
         }
     }
 
+    function switchPage(event)
+    {
+        handleClose();
+        if( sessionStorage.getItem('userLoggedIn') === 'true')
+        {
+            window.location.href = "/account";
+        }
+    }
+
     return(
         <div>
             <h3 className="headers">Login</h3>
@@ -210,7 +220,7 @@ function AccountLogin({}){
                     <p>{messages("body")}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose} >Close</Button>
+                        <Button variant="primary" onClick={switchPage} >Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>
