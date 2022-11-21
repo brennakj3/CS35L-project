@@ -6,6 +6,7 @@ import ReviewForm from './components/ReviewForm';
 import TopNavbar from './components/Navbar';
 import DiningHall from './components/DiningHall'
 import AccountLogin from './components/AccountLogin';
+import Account from './components/Account';
 
 //App handles all major routing to other webpages to display React pages
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/epicuria" element={<DiningHall name = "Epicuria" />} /> 
         <Route path="/bruin_plate" element={<DiningHall name = "Bruin Plate" />} /> 
         <Route path="/login" element={<AccountLogin/>} />
+        <Route path="/account" element={<Account/>} />
     </Routes>
     </BrowserRouter>
     </div>

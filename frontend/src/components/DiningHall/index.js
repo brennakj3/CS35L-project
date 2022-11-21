@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 //and display all reviews for De Neve
 //TODO: Change this to a component for all 3 dining halls, where just title and which reviews show changes
 import './diningHall.css'
+import StarsRating from 'react-star-rate';
 
 //This Review function just handles how each review displays
 function Review(props){
@@ -20,8 +21,6 @@ function Review(props){
 
 function DiningHall(props){
     const {name} = props;
-    var totalRatings =0;
-    var numReviews=0;
     const [reviews, setReviews] = useState([]);
     var [averageRating, setAverageRating] =useState([]);
     //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
@@ -40,6 +39,8 @@ function DiningHall(props){
         const reviews = await response.json();
         console.log(reviews); //used for debugging
         setReviews(reviews); //sets reviews to reviews obtained from database
+        var totalRatings =0;
+        var numReviews=0;
         reviews.map((review) =>{
           totalRatings+= review.rating;  //check if this works 
           numReviews+=1;
@@ -70,6 +71,7 @@ return(
       
       <h3 className="title">{name} Reviews</h3>
       <h4>Overall Rating: {averageRating} Stars </h4>
+      <StarsRating disabled={true} value={averageRating} />
       <p>{allReviews()}</p>
       
      

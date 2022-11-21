@@ -54,7 +54,14 @@ function AccountLogin({}){
                 console.log("Success");
                 setTitle("Welcome");
                 setBody("");
+
+
+                //logs user in by setting current user to that username
+                sessionStorage.setItem('user', thisUser.user); 
+                sessionStorage.setItem('userLoggedIn','true');
+                
                 handleShow(); 
+
             }
             else
             {
@@ -106,8 +113,15 @@ function AccountLogin({}){
             const data = await response.json();
             setTitle("Welcome");
             setBody("");
+
+            sessionStorage.setItem('user', JSON.stringify(newUser.user)); //not sure if data.name is a string, might need to stringify
+            //other components should be able to check if the user is logged in and get their name with getItem
+            sessionStorage.setItem('userLoggedIn','true');
+            
             handleShow(); 
+
         }
+
         else
         {
             console.log("Username taken");
