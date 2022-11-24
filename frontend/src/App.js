@@ -7,6 +7,7 @@ import TopNavbar from './components/Navbar';
 import DiningHall from './components/DiningHall'
 import AccountLogin from './components/AccountLogin';
 import Account from './components/Account';
+import SearchBar from './components/SearchBar'
 
 //App handles all major routing to other webpages to display React pages
 
@@ -16,6 +17,7 @@ function App() {
   //E.x "/" just routes to the home page of localhost
   return (
     <div>
+    <SearchBar placeholder="Search for a review..."></SearchBar>
     <TopNavbar /> 
     <BrowserRouter>
     <Routes>
