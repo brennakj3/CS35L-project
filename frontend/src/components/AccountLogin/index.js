@@ -211,10 +211,11 @@ function AccountLogin({}){
 
     return(
         <div>
-            <div id= "Login" class= "d-flex justify-content-center">
-            <h3 id = "loginTitle">Login</h3>
+            <div id= "Login" class= "post">
+            <h3 id = "loginTitle" class="title">Login </h3>
+            <p>              </p>
             <Form>
-                <div class="side-buffer input-group">
+                <div class="input-group row">
             <Form.Group controlID="userText">
                 <Form.Label>Login</Form.Label>
                 <Form.Control as="textarea" rows={1}
@@ -226,7 +227,7 @@ function AccountLogin({}){
             </Form.Group>
             <Form.Group controlID="passText">
                 <Form.Label>Password</Form.Label>
-                <div class="input-group mb-3">
+                <div class="input-group">
                 <Form.Control as="textarea" rows={1}
                    name="pass"
                    id="password"
@@ -238,12 +239,13 @@ function AccountLogin({}){
                 </div>
             </Form.Group>
             </div>
-            <h3>    </h3> 
-            <Button id= "click" class="side-buffer btn btn-primary" onClick={handleLogin}>Login</Button>
+            <div class = "text-center">
+            <h3>   </h3>
+            <Button id= "click" class="btn btn-primary button" onClick={handleLogin}>Login</Button>
             <Button id = "showPage" class="btn btn-primary" onClick={showSignUp}>Sign Up</Button>
+            </div>
             </Form>
             </div>
-        <h3>    </h3> 
 
             <Modal show= {show} onHide= {handleClose}>
                 <Modal.Header closeButton>

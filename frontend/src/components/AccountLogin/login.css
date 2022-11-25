@@ -1,8 +1,21 @@
-.headers{
+.post{
+    width: 500px;
+    height: fit-content;
+    border: 2px solid rgb(134, 133, 133);
+    margin-top: 10x;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
     text-align: left;
-    margin-left: 60px;
+    padding: 5px;
+    justify-content: center;
+    
 }
 
-.side-buffer{
-    margin-left: 5px;
+.title{
+    text-align: center;
+}
+
+.button{
+    margin-right: 20px;
 }
