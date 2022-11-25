@@ -182,16 +182,15 @@ function AccountLogin({}){
     const censorPass = () => 
     {
         setPassShown(!passShown);
+        if (passShown == true){
+            document.getElementById("password").type = "text";
+        }
+        if (passShown == false){
+            document.getElementById("password").type = "password";
+        }
         console.log(passShown);
     };
 
-    // censor password button for sign-up
-    const [supassShown, susetPassShown] = useState(false); 
-    const sucensorPass = () => 
-    {
-        susetPassShown(!supassShown);
-        console.log(supassShown);
-    };
 
     // show and hide sign up
     function showSignUp(){
@@ -208,6 +207,7 @@ function AccountLogin({}){
         document.getElementById("click").innerHTML = "Login";
         }
     };
+
 
     return(
         <div>
@@ -228,7 +228,10 @@ function AccountLogin({}){
             <Form.Group controlID="passText">
                 <Form.Label>Password</Form.Label>
                 <div class="input-group">
-                <Form.Control as="textarea" rows={1}
+                {/* <Form.Control as="textarea" rows={1} */}
+                <input as="textarea" rows={1}
+                   class = "form-control"
+                   type="password"
                    name="pass"
                    id="password"
                    onChange={handleLoginChange}
