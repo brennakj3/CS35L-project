@@ -56,7 +56,9 @@ function SearchBar({placeholder}){
                 <div className='searchIcon'></div>
             <div className='searchResults'>
                 {reviews.map( ( review ) =>{
-                    return <div> {review.body} </div>;
+                    return (<a className="searchItem"> 
+                            <p>{review.body}</p> 
+                            </a>)
                 }) }
             </div>
         </div>
