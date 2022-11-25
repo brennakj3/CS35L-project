@@ -178,16 +178,16 @@ function AccountLogin({}){
     }
  
     // censor password button for login
-    const [passShown, setPassShown] = useState(false); 
+    const [passShown, setPassShown] = useState(true); 
     const censorPass = () => 
     {
-        setPassShown(!passShown);
         if (passShown == true){
             document.getElementById("password").type = "text";
         }
         if (passShown == false){
             document.getElementById("password").type = "password";
         }
+        setPassShown(!passShown);
         console.log(passShown);
     };
 
