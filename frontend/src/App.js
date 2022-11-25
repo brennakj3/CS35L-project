@@ -17,8 +17,8 @@ function App() {
   //E.x "/" just routes to the home page of localhost
   return (
     <div>
-    <SearchBar placeholder="Search for a review..."></SearchBar>
     <TopNavbar /> 
+    <SearchBar placeholder="Search for a review..." ></SearchBar>
     <BrowserRouter>
     <Routes>
         <Route path="/" />
