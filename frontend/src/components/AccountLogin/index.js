@@ -16,7 +16,7 @@ function AccountLogin({}){
         user:"",
         pass:"",
         newuser:"",
-        newpass: ""
+        newpass: "",
     });
 
 
@@ -40,9 +40,12 @@ function AccountLogin({}){
     const handleShow = () => setShow(true);
     var [title, setTitle] =useState([]);
     var [body, setBody] =useState([]);
+    var [page, setPage] =useState(false); 
 
     //checks if username and password are valid
     async function handleLogin(event){
+        if (page === false){
+
         const input = loginData.user;
         const response = await fetch(`http://localhost:5000/getUser/${input}`);
         const data = await response.json();
@@ -79,25 +82,12 @@ function AccountLogin({}){
             setBody("Please try again");
             handleShow(); 
         }
-
-    };
-
-    // ensures username is not taken 
-    async function checkNewUser(user)
-    {
-        const input = user; 
-        const response = await fetch(`http://localhost:5000/getUser/${input}`);
-        const data = await response.json();
-        return data.length; 
-
     }
-
-    // stores new username and password in database
-    async function handleSignUp(event){
-        event.preventDefault();
+    // sign up
+    if(page === true){
         const newUser={
-            user: loginData.newuser,
-            pass: loginData.newpass
+            user: loginData.user,
+            pass: loginData.pass
         };
         const input={
             method:'POST',
@@ -106,7 +96,7 @@ function AccountLogin({}){
         };
 
         // finds number of accounts with that name
-        var num = await checkNewUser(loginData.newuser);
+        var num = await checkNewUser(loginData.user);
 
         if( num === 0)
         {
@@ -131,6 +121,34 @@ function AccountLogin({}){
             handleShow(); 
         }
     };
+
+    //for displaying popup messages
+    function messages(str)
+    {
+        if (str.localeCompare("title") === 0)
+        {
+            return title;
+        }
+        else if(str.localeCompare("body") === 0)
+        {
+            return body; 
+        }
+        else
+        {
+            return "error"; 
+        }
+    }
+    };
+
+    // ensures username is not taken 
+    async function checkNewUser(user)
+    {
+        const input = user; 
+        const response = await fetch(`http://localhost:5000/getUser/${input}`);
+        const data = await response.json();
+        return data.length; 
+
+    }
 
     //for displaying popup messages
     function messages(str)
@@ -175,13 +193,30 @@ function AccountLogin({}){
         console.log(supassShown);
     };
 
+    // show and hide sign up
+    function showSignUp(){
+        if (page === false){
+        setPage(!page); 
+        document.getElementById("loginTitle").innerHTML = "Sign Up";
+        document.getElementById("showPage").innerHTML = "Back to Login";
+        document.getElementById("click").innerHTML = "Sign Up";
+        }
+        if(page === true){
+        setPage(!page);
+        document.getElementById("loginTitle").innerHTML = "Login";
+        document.getElementById("showPage").innerHTML = "Sign Up";
+        document.getElementById("click").innerHTML = "Login";
+        }
+    };
+
     return(
         <div>
-            <h3 className="headers">Login</h3>
+            <div id= "Login" class= "d-flex justify-content-center">
+            <h3 id = "loginTitle">Login</h3>
             <Form>
-                <div class="side-buffer input-group mb-3 w-25">
+                <div class="side-buffer input-group">
             <Form.Group controlID="userText">
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Login</Form.Label>
                 <Form.Control as="textarea" rows={1}
                    name="user"
                    id="username"
@@ -204,38 +239,11 @@ function AccountLogin({}){
             </Form.Group>
             </div>
             <h3>    </h3> 
-            <Button class="side-buffer btn btn-primary" onClick={handleLogin}>Login</Button>
+            <Button id= "click" class="side-buffer btn btn-primary" onClick={handleLogin}>Login</Button>
+            <Button id = "showPage" class="btn btn-primary" onClick={showSignUp}>Sign Up</Button>
             </Form>
-        <h3>    </h3> 
-        <h3 className="headers">Sign Up</h3>
-        <Form>
-        <div class="side-buffer input-group mb-3 w-25">
-            <Form.Group controlID="userText">
-                <Form.Label>Username</Form.Label>
-                <Form.Control as="textarea" rows={1}
-                   name="newuser"
-                   id="newusername"
-                   onChange={handleLoginChange}
-                   placeholder="Username"
-                   value={loginData.newuser}/>
-            </Form.Group>
-            <Form.Group controlID="passText">
-                <Form.Label>Password</Form.Label>
-                <div class="input-group mb-3">
-                <Form.Control as="textarea" rows={1}
-                   name="newpass"
-                   id="newpassword"
-                   onChange={handleLoginChange}
-                   placeholder="Password"
-                   value={loginData.newpass}/>
-                        <Button variant="outline-secondary" onClick={sucensorPass}> <img src=" https://static-00.iconduck.com/assets.00/eye-password-hide-icon-512x512-iv45hct9.png" height="15" width ="15" alt=""/>
-                        </Button>
-                </div>
-            </Form.Group>
             </div>
-            <h3>    </h3> 
-            <Button class="side-buffer btn btn-primary" onClick={handleSignUp}>SignUp</Button>
-            </Form>
+        <h3>    </h3> 
 
             <Modal show= {show} onHide= {handleClose}>
                 <Modal.Header closeButton>
