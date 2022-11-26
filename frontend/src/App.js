@@ -18,10 +18,9 @@ function App() {
   return (
     <div>
     <TopNavbar /> 
-    <SearchBar placeholder="Search for a review..." ></SearchBar>
-    <BrowserRouter>
+=    <BrowserRouter>
     <Routes>
-        <Route path="/" />
+        <Route path="/" element={<SearchBar placeholder="Search for a review..."/>} />
         <Route path="/review" element={<ReviewForm />} />
         <Route path="/de_neve" element={<DiningHall name = "De Neve" />} /> 
         <Route path="/epicuria" element={<DiningHall name = "Epicuria" />} /> 
