@@ -26,7 +26,7 @@ import "./searchBar.css"
 
 function SearchBar({placeholder}){
     const [reviews, setReviews] = useState([]);
-    var [averageRating, setAverageRating] =useState([]);
+    const [ filteredReviews, setFilteredReviews ] = useState( [] );
     //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
   useEffect(()=> {
     async function getReviews() {
@@ -34,7 +34,7 @@ function SearchBar({placeholder}){
         const bPlate = "Bruin Plate";
         const epicuria = "Epicuria"
         //makes http request to server to get all the dining hall reviews from this dining hall from the database
-        const response = await fetch(`http://localhost:5000/getReviews/${deNeve}`);
+        const response = await fetch(`http://localhost:5000/getReviews/${deNeve}`); //TODO: add similar logic for Bplate and epicuria once they get their own review page
         //some feedback for a fetching error 
         if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
@@ -49,18 +49,33 @@ function SearchBar({placeholder}){
     getReviews();
     
 }, []);
+    const handleInput = ( event ) => {
+        const enteredWord = event.target.value;
+        var matchingReviews = [];
+        reviews.map(( review ) => {
+            if( review.body.includes( enteredWord ) )
+            {
+                matchingReviews.push( review.body );
+                console.log( matchingReviews );
+            }
+        })
+        setFilteredReviews( matchingReviews );
+        console.log( filteredReviews );
+    }
     return(
         <div className='search'>
             <div className='searchData'></div>
-                <input type='text' placeholder={placeholder} ></input>
+                <input type='text' placeholder={placeholder} onChange={handleInput} ></input>
                 <div className='searchIcon'></div>
+            {filteredReviews.length != 0 && filteredReviews.length != reviews.length &&//only show filtered results when the user has inputted something in the search bar
             <div className='searchResults'>
-                {reviews.map( ( review ) =>{
+                {filteredReviews.map( ( review ) =>{
                     return (<a className="searchItem"> 
-                            <p>{review.body}</p> 
+                            <p>{review}</p> 
                             </a>)
                 }) }
             </div>
+            }
         </div>
     );
 }
