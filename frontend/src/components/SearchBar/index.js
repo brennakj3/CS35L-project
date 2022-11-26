@@ -24,7 +24,8 @@ import "./searchBar.css"
 // console.log( "here" );
 // console.log( reviews );
 
-function SearchBar({placeholder}){
+function SearchBar({}){
+    const placeholder = "Search for a review...";
     const [reviews, setReviews] = useState([]);
     const [ filteredReviews, setFilteredReviews ] = useState( [] );
     //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
