@@ -7,6 +7,7 @@ import TopNavbar from './components/Navbar';
 import DiningHall from './components/DiningHall'
 import AccountLogin from './components/AccountLogin';
 import Account from './components/Account';
+import SearchBar from './components/SearchBar'
 
 //App handles all major routing to other webpages to display React pages
 
@@ -19,7 +20,7 @@ function App() {
     <TopNavbar /> 
     <BrowserRouter>
     <Routes>
-        <Route path="/" />
+        <Route path="/" element={<SearchBar />} />
         <Route path="/review" element={<ReviewForm />} />
         <Route path="/de_neve" element={<DiningHall name = "De Neve" />} /> 
         <Route path="/epicuria" element={<DiningHall name = "Epicuria" />} /> 
