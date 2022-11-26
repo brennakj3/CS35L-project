@@ -50,9 +50,13 @@ function SearchBar({placeholder}){
     
 }, []);
     const handleInput = ( event ) => {
-        const enteredWord = event.target.value;
+        var enteredWord = event.target.value;
         var matchingReviews = [];
         reviews.map(( review ) => {
+            var currentReviewBody = review.body;
+            //make sure the search is done case insensitive
+            currentReviewBody = currentReviewBody.toLowerCase();
+            enteredWord = enteredWord.toLowerCase();
             if( review.body.includes( enteredWord ) )
             {
                 matchingReviews.push( review.body );
