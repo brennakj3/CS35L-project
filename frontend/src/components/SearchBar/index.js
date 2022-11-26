@@ -57,7 +57,7 @@ function SearchBar({placeholder}){
             //make sure the search is done case insensitive
             currentReviewBody = currentReviewBody.toLowerCase();
             enteredWord = enteredWord.toLowerCase();
-            if( review.body.includes( enteredWord ) )
+            if( currentReviewBody.includes( enteredWord ) )
             {
                 matchingReviews.push( review.body );
                 console.log( matchingReviews );
