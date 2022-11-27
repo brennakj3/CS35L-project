@@ -31,11 +31,9 @@ function SearchBar({}){
     //This useEffect gets all reviews with dining hall: this dining hall and sets this page's reviews to all of them
   useEffect(()=> {
     async function getReviews() {
-        const deNeve=  "De Neve";
-        const bPlate = "Bruin Plate";
-        const epicuria = "Epicuria"
+
         //makes http request to server to get all the dining hall reviews from this dining hall from the database
-        const response = await fetch(`http://localhost:5000/getReviews/${deNeve}`); //TODO: add similar logic for Bplate and epicuria once they get their own review page
+        const response = await fetch(`http://localhost:5000/getReviews`); //TODO: add similar logic for Bplate and epicuria once they get their own review page
         //some feedback for a fetching error 
         if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
@@ -68,7 +66,7 @@ function SearchBar({}){
         console.log( filteredReviews );
     }
     function showReviews(){
-        if (filteredReviews.length != 0 && filteredReviews.length != reviews.length){
+        if (filteredReviews.length !== 0 && filteredReviews.length !== reviews.length){
         return filteredReviews.map( ( review ) =>{
             return(
                 <Review review= {review} />

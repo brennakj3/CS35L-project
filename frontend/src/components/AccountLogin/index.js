@@ -105,7 +105,7 @@ function AccountLogin(_){
             setTitle("Welcome");
             setBody("");
 
-            sessionStorage.setItem('user', JSON.stringify(newUser.user)); //not sure if data.name is a string, might need to stringify
+            sessionStorage.setItem('user', newUser.user); //not sure if data.name is a string, might need to stringify
             //other components should be able to check if the user is logged in and get their name with getItem
             sessionStorage.setItem('userLoggedIn','true');
             

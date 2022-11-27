@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-
+import {useNavigate} from 'react-router-dom';
 import StarsRating from 'react-star-rate';
 //import { Alert } from 'bootstrap';
 import Alert from 'react-bootstrap/Alert';
@@ -16,6 +16,7 @@ Need to implement star ranking, might want to install another package for that (
 Need to fix styling, text box and option select shouldn't fill page 
 Need to implement actually signup/login, then add username being retrieved from current user*/
 function ReviewForm(_){
+  const navigate = useNavigate();
   const [reviewData, setReviewData] = useState({   
       //setting up the states for a review, essentially its variables
     body:"",
@@ -42,7 +43,7 @@ function ReviewForm(_){
       body: "",
       diningHall:"De Neve",
     };
-    if (sessionStorage.getItem('user')==null){
+    if (sessionStorage.getItem('userLoggedIn')=='false'){
       setShowLoginModal(true);
       setReviewData(blankForm);
       setRating(1);
@@ -85,6 +86,7 @@ function ReviewForm(_){
         <Modal.Body>
           <p>
           Log in or sign up before writing a review. </p>
+          <Button variant="primary" onClick={()=>navigate('/login')}>Login/Signup</Button>
         </Modal.Body>
   
         </Modal.Dialog>
