@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 
 import "./searchBar.css"
-
+import Review from '../Review'
 // async function getReviews( reviews ) {
 //     const deNeve=  "De Neve";
 //     const bPlate = "Bruin Plate"
@@ -60,27 +60,35 @@ function SearchBar({}){
             enteredWord = enteredWord.toLowerCase();
             if( currentReviewBody.includes( enteredWord ) )
             {
-                matchingReviews.push( review.body );
+                matchingReviews.push( review );
                 console.log( matchingReviews );
             }
         })
         setFilteredReviews( matchingReviews );
         console.log( filteredReviews );
     }
+    function showReviews(){
+        if (filteredReviews.length != 0 && filteredReviews.length != reviews.length){
+        return filteredReviews.map( ( review ) =>{
+            return(
+                <Review review= {review} />
+            );
+        });
+    }
+    }
+    
     return(
         <div className='search'>
-            <div className='searchData'></div>
+            <div className='searchData'>
                 <input type='text' placeholder={placeholder} onChange={handleInput} ></input>
-                <div className='searchIcon'></div>
-            {filteredReviews.length != 0 && filteredReviews.length != reviews.length &&//only show filtered results when the user has inputted something in the search bar
-            <div className='searchResults'>
-                {filteredReviews.map( ( review ) =>{
-                    return (<a className="searchItem"> 
-                            <p>{review}</p> 
-                            </a>)
-                }) }
-            </div>
-            }
+                </div>
+                
+            
+            <div className='searchIcon'></div>
+
+            <p>{showReviews()}</p>
+            
+            
         </div>
     );
 }
