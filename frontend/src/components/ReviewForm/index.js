@@ -15,7 +15,7 @@ import Alert from 'react-bootstrap/Alert';
 Need to implement star ranking, might want to install another package for that (mdbreact maybe)
 Need to fix styling, text box and option select shouldn't fill page 
 Need to implement actually signup/login, then add username being retrieved from current user*/
-function ReviewForm({}){
+function ReviewForm(_){
   const [reviewData, setReviewData] = useState({   
       //setting up the states for a review, essentially its variables
     body:"",
@@ -42,7 +42,7 @@ function ReviewForm({}){
       body: "",
       diningHall:"De Neve",
     };
-    if (sessionStorage.getItem('userLoggedIn')=='false'){
+    if (sessionStorage.getItem('user')==null){
       setShowLoginModal(true);
       setReviewData(blankForm);
       setRating(1);

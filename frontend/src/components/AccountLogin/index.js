@@ -11,7 +11,7 @@ import './login.css'
 // TO DO: maybe blur out password characters for security purposes 
 
 
-function AccountLogin({}){
+function AccountLogin(_){
     const [loginData, setLoginData] = useState ({
         user:"",
         pass:"",
@@ -181,10 +181,10 @@ function AccountLogin({}){
     const [passShown, setPassShown] = useState(true); 
     const censorPass = () => 
     {
-        if (passShown == true){
+        if (passShown === true){
             document.getElementById("password").type = "text";
         }
-        if (passShown == false){
+        if (passShown === false){
             document.getElementById("password").type = "password";
         }
         setPassShown(!passShown);
