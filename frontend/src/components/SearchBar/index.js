@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./searchBar.css"
 import Review from '../Review'
+import {Search} from 'react-bootstrap-icons'
 // async function getReviews( reviews ) {
 //     const deNeve=  "De Neve";
 //     const bPlate = "Bruin Plate"
@@ -69,7 +70,12 @@ function SearchBar({}){
         if (filteredReviews.length !== 0 && filteredReviews.length !== reviews.length){
         return filteredReviews.map( ( review ) =>{
             return(
-                <Review review= {review} />
+                <div>
+                    <div>
+                        <Review review= {review} />
+                    </div>
+                    
+                </div>
             );
         });
     }
@@ -78,15 +84,12 @@ function SearchBar({}){
     return(
         <div className='search'>
             <div className='searchData'>
-                <input type='text' placeholder={placeholder} onChange={handleInput} ></input>
+               <input type='text' placeholder={placeholder} onChange={handleInput} ></input>                
+                <div className='searchIcon'>
+                        <Search/>
                 </div>
-                
-            
-            <div className='searchIcon'></div>
-
+            </div>
             <p>{showReviews()}</p>
-            
-            
         </div>
     );
 }
