@@ -9,16 +9,21 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 //TODO: 
 //This is the top navbar that routes to the different pages 
 function TopNavbar() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  var [isLoggedIn, setLoggedIn] = useState(false);
   
   useEffect(()=> {
     //This listens for if the user val changes in session storage
-    const userLoggedIn = sessionStorage.getItem('userLoggedIn');
-    if (userLoggedIn == 'false'){
-      setLoggedIn(false); }
-    else {
+    var userLoggedIn = sessionStorage.getItem('userLoggedIn');
+    console.log(userLoggedIn);
+    if (userLoggedIn === "false")
+    {
+      setLoggedIn(false);
+    }
+    else if (userLoggedIn === "true"){
       setLoggedIn(true);
     }
+    else{
+      setLoggedIn(false); }
   }); 
   
   function handleLogout(){
@@ -46,12 +51,12 @@ function TopNavbar() {
           </Nav>
           <Nav> 
           </Nav>
-          <Nav> {!isLoggedIn
-          ? <Nav.Link href="/login">Login/Signup</Nav.Link> 
-          : <NavDropdown title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/account">Your Account</NavDropdown.Item>
-              <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
-            </NavDropdown>}
+          <Nav> {isLoggedIn
+          ? <NavDropdown title="Account" id="basic-nav-dropdown">
+          <NavDropdown.Item href="/account">Your Account</NavDropdown.Item>
+          <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
+        </NavDropdown>
+          : <Nav.Link href="/login">Login/Signup</Nav.Link>  }
           </Nav>
         </Navbar.Collapse>
       </Container>
