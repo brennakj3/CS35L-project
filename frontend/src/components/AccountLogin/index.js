@@ -6,9 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 
-import './login.css'
-
-// TO DO: maybe blur out password characters for security purposes 
+import './login.css' 
 
 
 function AccountLogin(_){
@@ -219,7 +217,7 @@ function AccountLogin(_){
             <Form>
                 <div class="input-group row">
             <Form.Group controlID="userText">
-                <Form.Label>Login</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control as="textarea" rows={1}
                    name="user"
                    id="username"
