@@ -24,18 +24,39 @@
 
 .rating
 {
-    color: white;
+    margin-left: 20px;
+    margin-top: 0px;
+    color: black;
     font-size: 30px;
-    text-shadow:
+    /* text-shadow:
         0.07em 0 black,
         0 0.07em black,
         -0.07em 0 black,
-        0 -0.07em black;
+        0 -0.07em black; */
 }
 
 .Epicuria, .De, .Bruin
 {
     min-height: 100vh;
+}
+
+.go4197845992 
+{
+    margin-left: 83px!important;
+}
+
+.ratingBox
+{
+    height: 130px;
+    width: 400px;
+    margin-left: 100px;
+    border: 2px solid gray;
+    padding: 15px;
+    outline: none;
+    font-size: large;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    background:white;
 }
 
 /* .display
