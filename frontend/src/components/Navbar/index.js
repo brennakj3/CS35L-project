@@ -32,6 +32,7 @@ function TopNavbar() {
     sessionStorage.setItem('userLoggedIn','false');
     sessionStorage.setItem('user','');
     setLoggedIn(false);
+    window.location.href='/';
   }
   return (
     <div>
