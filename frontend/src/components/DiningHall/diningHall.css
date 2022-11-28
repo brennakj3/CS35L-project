@@ -13,4 +13,58 @@
 }
 .title{
     text-align: center;
+    color: white;
+    font-size: 40px;
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
+}
+
+.rating
+{
+    color: white;
+    font-size: 30px;
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
+}
+
+.Epicuria
+{
+    background-image: url(../../../public/assets/epicuriaInside\(no\ people\).jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: repeat-y;
+    height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.De 
+{
+    background-image: url(../../../public/assets/DeNeve\(inside\).jpeg);
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: repeat-y;
+    height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.Bruin
+{
+    background-image: url(../../../public/assets/Bplate\(outside\).jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: repeat-y;
+    height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }

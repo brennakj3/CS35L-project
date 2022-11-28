@@ -1,8 +1,11 @@
 body {
-  background-image: url(../public/assets/background.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url(../public/assets/diningHallLogo.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
   height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

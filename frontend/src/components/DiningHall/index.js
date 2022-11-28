@@ -67,10 +67,10 @@ function allReviews(){
 
 //Displays all of the components onto the page
 return(
-    <div>
+    <div className={name}>
       
       <h3 className="title">{name} Reviews</h3>
-      <h4>Overall Rating: {averageRating} Stars </h4>
+      <h4 className="rating">Overall Rating: {averageRating} Stars </h4>
       <StarsRating disabled={true} value={averageRating} />
       <p>{allReviews()}</p>
       
