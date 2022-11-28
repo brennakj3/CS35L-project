@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
 //Adapted from react-bootstrap documentation
-//TODO: Add Login/Signup button on far right, also home and review page might eventually be different
+//TODO: 
 //This is the top navbar that routes to the different pages 
 function TopNavbar() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  
+  useEffect(()=> {
+    //This listens for if the user val changes in session storage
+    const userLoggedIn = sessionStorage.getItem('userLoggedIn');
+    if (userLoggedIn == 'false'){
+      setLoggedIn(false); }
+    else {
+      setLoggedIn(true);
+    }
+  }); 
+  
+  function handleLogout(){
+    //Need this to also redirect to home page so they don't stay on the account page
+    //Remove Logout button from account page
+    sessionStorage.setItem('userLoggedIn','false');
+    sessionStorage.setItem('user','');
+    setLoggedIn(false);
+  }
   return (
     <div>
     <Navbar bg="light" expand="lg">
@@ -24,9 +44,14 @@ function TopNavbar() {
               <NavDropdown.Item href="/epicuria">Epicuria</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav>
-            <Nav.Link href="/login">Login/Signup</Nav.Link>
-            <Nav.Link href="/account">Account</Nav.Link>
+          <Nav> 
+          </Nav>
+          <Nav> {!isLoggedIn
+          ? <Nav.Link href="/login">Login/Signup</Nav.Link> 
+          : <NavDropdown title="Account" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/account">Your Account</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
+            </NavDropdown>}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -36,3 +61,12 @@ function TopNavbar() {
 }
 
 export default TopNavbar;
+
+/*
+{ !isLoggedIn 
+          ? <Nav.Link href="/login">Login/Signup</Nav.Link> 
+          : <Nav.Link href="/account">Account</Nav.Link>
+          }
+           */
+
+//TODO: Logging out should take you off the account page
