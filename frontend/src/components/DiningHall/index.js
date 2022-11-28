@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 //TODO: Change this to a component for all 3 dining halls, where just title and which reviews show changes
 import './diningHall.css'
 import StarsRating from 'react-star-rate';
+import DNBackground from '../DiningHall/assets/DeNeveMain.jpeg'
+import EBackground from '../DiningHall/assets/epicuriaMain.jpg'
+import BPBackground from '../DiningHall/assets/BplateMain.jpg'
 
 //This Review function just handles how each review displays
 function Review(props){
@@ -66,15 +69,33 @@ function allReviews(){
 
 
 //Displays all of the components onto the page
+var Background;
+if( name === "De Neve" )
+  Background = DNBackground;
+else if( name === "Bruin Plate" )
+  Background = BPBackground;
+else if( name === "Epicuria" )
+  Background = EBackground;
 return(
-    <div>
+  <div className="display">
+    <div className={name} style={{
+      backgroundSize: "100%",
+      backgroundAttachment: "fixed",
+      backgroundRepeat: "no-repeat",
+      backgroundImage: `url(${Background})`,
+      position: "relative",
+      zIndex: "-1"
+    }}>
       
       <h3 className="title">{name} Reviews</h3>
-      <h4>Overall Rating: {averageRating} Stars </h4>
-      <StarsRating disabled={true} value={averageRating} />
+      <div className="ratingBox">
+        <h4 className="rating">Overall Rating: {averageRating} Stars </h4>
+        <StarsRating disabled={true} value={averageRating} className={"stars"} />
+      </div>
       <p>{allReviews()}</p>
       
      
+    </div>
    </div>
 
 );
