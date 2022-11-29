@@ -54,10 +54,12 @@ function SearchBar({}){
         var matchingReviews = [];
         reviews.map(( review ) => {
             var currentReviewBody = review.body;
+            var currentReviewDiningHall = review.diningHall; 
             //make sure the search is done case insensitive
             currentReviewBody = currentReviewBody.toLowerCase();
+            currentReviewDiningHall = currentReviewDiningHall.toLowerCase(); 
             enteredWord = enteredWord.toLowerCase();
-            if( currentReviewBody.includes( enteredWord ) )
+            if( currentReviewBody.includes( enteredWord ) || currentReviewDiningHall.includes( enteredWord ) )
             {
                 matchingReviews.push( review );
                 console.log( matchingReviews );
