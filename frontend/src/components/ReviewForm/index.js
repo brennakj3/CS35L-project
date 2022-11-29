@@ -97,16 +97,19 @@ function ReviewForm(_){
   }
   function PostAlert(){
     return(
+      <div class="alert">
       <Alert variant='success' show={showPostAlert} onClose={() => setShowPostAlert(false)} dismissible>
         <Alert.Heading> Success!</Alert.Heading>
         <p>Your review was successfully posted. </p>
       </Alert>
+      </div>
     );
   }
     
     return (
       <>
       <LoginModal />
+      <div class="post">
       <Form>
       <Form.Group controlID="diningSelect">
           <Form.Label>Dining Hall</Form.Label>
@@ -135,6 +138,7 @@ function ReviewForm(_){
         </Form.Group>
       <Button variant="primary" onClick={handlePost}>Post</Button>
       </Form>
+      </div>
       <PostAlert />
       </>
     );
