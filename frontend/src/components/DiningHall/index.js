@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import './diningHall.css'
 import StarsRating from 'react-star-rate';
 import DNBackground from '../DiningHall/assets/DeNeveMain.jpeg'
-import EBackground from '../DiningHall/assets/epicuriaMain.jpg'
+import EBackground from '../DiningHall/assets/epiMain.jpg'
 import BPBackground from '../DiningHall/assets/BplateMain.jpg'
 
 //This Review function just handles how each review displays
