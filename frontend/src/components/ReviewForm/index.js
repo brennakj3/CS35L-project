@@ -43,7 +43,7 @@ function ReviewForm(_){
       body: "",
       diningHall:"De Neve",
     };
-    if (sessionStorage.getItem('userLoggedIn')=='false'){
+    if (sessionStorage.getItem('userLoggedIn')!='true'){
       setShowLoginModal(true);
       setReviewData(blankForm);
       setRating(1);
@@ -108,8 +108,8 @@ function ReviewForm(_){
     
     return (
       <>
-      <LoginModal />
       <div class="post">
+      <LoginModal />
       <Form>
       <Form.Group controlID="diningSelect">
           <Form.Label>Dining Hall</Form.Label>
