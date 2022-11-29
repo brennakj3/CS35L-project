@@ -1,17 +1,10 @@
-.post{
-    width: 500px;
+
+.alert{
+    width: 600px;
     height: fit-content;
-    border: 2px solid rgb(134, 133, 133);
     margin-top: 10x;
     margin-left: auto;
     margin-right: auto;
-    background: white;
     text-align: left;
-    padding: 5px;
     justify-content: center;
-    
-}
-
-.alert{
-    width: 40%;
 }

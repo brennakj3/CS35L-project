@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom';
 import StarsRating from 'react-star-rate';
 //import { Alert } from 'bootstrap';
 import Alert from 'react-bootstrap/Alert';
+import './reviewForm.css'
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
