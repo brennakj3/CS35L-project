@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom';
 import Review from '../Review'
  
@@ -104,13 +103,11 @@ function Account(){
     // shows the review HTML elements
     function showReviews() {
         if(userReviews.length !== 0) {
-            const test = userReviews.map((review) => {
+            return userReviews.map((review) => {
                 return(
                        <Review review={review}/>
                 );
             });
-            console.log(test)
-            return test;
         }
     }
     
