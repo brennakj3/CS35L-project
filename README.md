@@ -4,7 +4,7 @@ Web application for reviewing and ranking UCLA dining halls
 
 ### Setting up MongoDB: ###
 
-Make sure you've cloned the repository onto your local device. Log into MongoDB Atlas (in browser). Find the database called CS35L Project. Go to database access and add yourself as a user (use something random for the password, don't use any of your actual passwords).
+Make sure you've cloned the repository onto your local device. Log into MongoDB Atlas (in browser). Create a new free database for the project. Go to your database and add yourself as a database user with a username and password. Go to your database's network access and add the IP address 0.0.0.0 to ensure you can access your database from anywhere.
 
 Go back to the database tab, click connect, and then connect your application.
 
