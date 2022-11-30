@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom';
 import StarsRating from 'react-star-rate';
 //import { Alert } from 'bootstrap';
 import Alert from 'react-bootstrap/Alert';
+import './reviewForm.css'
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
@@ -43,7 +44,7 @@ function ReviewForm(_){
       body: "",
       diningHall:"De Neve",
     };
-    if (sessionStorage.getItem('userLoggedIn')=='false'){
+    if (sessionStorage.getItem('userLoggedIn')!='true'){
       setShowLoginModal(true);
       setReviewData(blankForm);
       setRating(1);
@@ -97,15 +98,18 @@ function ReviewForm(_){
   }
   function PostAlert(){
     return(
+      <div class="alert">
       <Alert variant='success' show={showPostAlert} onClose={() => setShowPostAlert(false)} dismissible>
         <Alert.Heading> Success!</Alert.Heading>
         <p>Your review was successfully posted. </p>
       </Alert>
+      </div>
     );
   }
     
     return (
       <>
+      <div class="post">
       <LoginModal />
       <Form>
       <Form.Group controlID="diningSelect">
@@ -135,6 +139,7 @@ function ReviewForm(_){
         </Form.Group>
       <Button variant="primary" onClick={handlePost}>Post</Button>
       </Form>
+      </div>
       <PostAlert />
       </>
     );

@@ -13,4 +13,98 @@
 }
 .title{
     text-align: center;
+    color: white;
+    font-size: 40px;
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
 }
+
+.rating
+{
+    margin-left: 20px;
+    margin-top: 0px;
+    color: black;
+    font-size: 30px;
+    /* text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black; */
+}
+
+.Epicuria, .De, .Bruin
+{
+    min-height: 100vh;
+}
+
+.go4197845992 
+{
+    margin-left: 83px!important;
+}
+
+.ratingBox
+{
+    height: 130px;
+    width: 400px;
+    margin-left: 100px;
+    border: 2px solid gray;
+    padding: 15px;
+    outline: none;
+    font-size: large;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    background:white;
+}
+
+/* .display
+{
+    height: 100%;
+    background-image: url(../../../public/assets/epicuriaInside\(no\ people\).jpg);
+    background-size: 100%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-attachment: scroll; 
+    background-repeat: no-repeat;  
+    height: 100vh;
+}
+
+.Epicuria 
+{
+    background-image: url(../../../public/assets/epicuriaInside\(no\ people\).jpg);
+    background-size: 100%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-attachment: scroll; 
+    background-repeat: no-repeat;  
+    height: 100vh;
+    
+}
+
+.De 
+{
+    background-image: url(../../../public/assets/DeNeve\(inside\).jpeg);
+    background-size: 100%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-attachment: fixed; 
+    background-repeat: repeat;  
+    height: 100vh;
+}
+
+.Bruin
+{
+    background-image: url(../../../public/assets/Bplate\(outside\).jpg);
+    background-size: 100%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-attachment: scroll; 
+    background-repeat: no-repeat;  
+    height: 100vh;
+} */

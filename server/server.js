@@ -52,7 +52,6 @@ app.get('/getReviews/:diningHall', async (req, res) => {
 
 // Gets account info
 app.get('/getUser/:user', async (req,res) => {
-    console.log("test");
     const user = await userModel.find({user: req.params.user});
     try{
         res.send(user);

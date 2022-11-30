@@ -6,9 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 
-import './login.css'
-
-// TO DO: maybe blur out password characters for security purposes 
+import './login.css' 
 
 
 function AccountLogin(_){
@@ -63,6 +61,7 @@ function AccountLogin(_){
                 //logs user in by setting current user to that username
                 sessionStorage.setItem('user', thisUser.user); 
                 sessionStorage.setItem('userLoggedIn','true');
+               
                 
                 handleShow(); 
 
@@ -108,6 +107,7 @@ function AccountLogin(_){
             sessionStorage.setItem('user', newUser.user); //not sure if data.name is a string, might need to stringify
             //other components should be able to check if the user is logged in and get their name with getItem
             sessionStorage.setItem('userLoggedIn','true');
+            
             
             handleShow(); 
 
@@ -217,7 +217,7 @@ function AccountLogin(_){
             <Form>
                 <div class="input-group row">
             <Form.Group controlID="userText">
-                <Form.Label>Login</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control as="textarea" rows={1}
                    name="user"
                    id="username"

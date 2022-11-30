@@ -1,0 +1,10 @@
+
+.alert{
+    width: 600px;
+    height: fit-content;
+    margin-top: 10x;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    justify-content: center;
+}
