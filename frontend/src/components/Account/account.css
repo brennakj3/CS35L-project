@@ -1,0 +1,13 @@
+.menuSelect{
+    width: 200px;
+    margin-top: 20px;
+    border: 2px solid gray;
+    margin-left: 70px;
+    border: 0;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    border: 2px solid gray;
+    padding: 10px;
+    outline: none;
+    font-size: large;
+    border-radius: 25px;
+}

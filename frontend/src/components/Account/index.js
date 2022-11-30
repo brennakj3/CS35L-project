@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+
 import Review from '../Review'
- 
+import './account.css';
 function Account(){
     const [reviews, setReviews] = useState([]);
     const [userReviews, setUserReviews] = useState([]);

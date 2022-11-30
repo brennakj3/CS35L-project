@@ -6,15 +6,16 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 //Adapted from react-bootstrap documentation
-//TODO: 
 //This is the top navbar that routes to the different pages 
 function TopNavbar() {
   var [isLoggedIn, setLoggedIn] = useState(false);
   
   useEffect(()=> {
-    //This listens for if the user val changes in session storage
+    //This checks if the user val has changed in session storage
     var userLoggedIn = sessionStorage.getItem('userLoggedIn');
     console.log(userLoggedIn);
+    //Checking whether user is logged in or not
+    //Used for conditionally displaying Login vs Account
     if (userLoggedIn === "false")
     {
       setLoggedIn(false);
@@ -24,11 +25,10 @@ function TopNavbar() {
     }
     else{
       setLoggedIn(false); }
-  }); 
+  },[]); 
   
   function handleLogout(){
-    //Need this to also redirect to home page so they don't stay on the account page
-    //Remove Logout button from account page
+    //Logs user out
     sessionStorage.setItem('userLoggedIn','false');
     sessionStorage.setItem('user','');
     setLoggedIn(false);
@@ -67,12 +67,3 @@ function TopNavbar() {
 }
 
 export default TopNavbar;
-
-/*
-{ !isLoggedIn 
-          ? <Nav.Link href="/login">Login/Signup</Nav.Link> 
-          : <Nav.Link href="/account">Account</Nav.Link>
-          }
-           */
-
-//TODO: Logging out should take you off the account page

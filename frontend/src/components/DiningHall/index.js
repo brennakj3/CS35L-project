@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-//want this to display some information about the dining hall
-//and display all reviews for De Neve
-//TODO: Change this to a component for all 3 dining halls, where just title and which reviews show changes
+//Displays all of the reviews for a dining Hall
+
 import './diningHall.css'
 import StarsRating from 'react-star-rate';
 import DNBackground from '../DiningHall/assets/DeNeveMain.jpeg'
@@ -40,7 +39,6 @@ function DiningHall(props){
           }
        
         const reviews = await response.json();
-        // console.log(reviews); //used for debugging
         
         // Reviews should be sorted from highest to lowest rating
         var tempReviews = reviews;
@@ -84,13 +82,29 @@ function allReviews(){
 
 
 //Displays all of the components onto the page
+//Gives Description of the restaurant
 var Background;
-if( name === "De Neve" )
+var description;
+var link;
+var linkText;
+if( name === "De Neve" ) {
   Background = DNBackground;
-else if( name === "Bruin Plate" )
+    description = "Specializing in cuisine of the Americas.";
+    link = "https://portal.housing.ucla.edu/dining-locations/de-neve";
+    linkText = "See what De Neve has to offer.";
+}
+else if( name === "Bruin Plate" ) {
   Background = BPBackground;
-else if( name === "Epicuria" )
+    description = "A leader in healthy, sustainable and mindful eating.";
+    link = "https://portal.housing.ucla.edu/dining-locations/bruin-plate";
+    linkText = "Learn more about Bruin Plate";
+}
+else if( name === "Epicuria" ) {
   Background = EBackground;
+    description = "Simple, delicious Mediterranean meals.";
+    link = "https://portal.housing.ucla.edu/dining-locations/epicuria-covel";
+    linkText = "Read more about Epicuria at Covel";
+}
 return(
   <div className="display">
     <div className={name} style={{
@@ -106,9 +120,11 @@ return(
         <h4 className="rating">Overall Rating: {averageRating} Stars </h4>
         <StarsRating disabled={true} value={averageRating} className={"stars"} />
       </div>
+      <div className="descriptionBox">
+       <p className="description">{description}</p>
+       <a href={link} className="descriptionLink" target="_blank">{linkText}</a>
+      </div>
       <p>{allReviews()}</p>
-      
-     
     </div>
    </div>
 

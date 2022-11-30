@@ -57,6 +57,41 @@
     border-radius: 25px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
     background:white;
+    display: inline-block;
+}
+
+.descriptionBox
+{
+    height: 130px;
+    width: 400px;
+    float: right;
+    margin-right: 100px;
+    border: 2px solid gray;
+    padding: 15px;
+    outline: none;
+    font-size: large;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    background:white;
+    display: inline-block;
+}
+
+.description
+{
+    margin-left: 20px;
+    margin-top: 0px;
+    color: black;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.descriptionLink
+{
+    margin-left: 20px;
+    margin-top: 0px;
+    color: blue;
+    font-size: 18px;
+    font-style: italic;
 }
 
 /* .display

@@ -1,6 +1,6 @@
 import React from "react";
 import "./review.css";
-//This just handles how a review displays, can be changed to look better if needed 
+//This handles how a review displays
 function Review(props){
     return(
       <div className="post">

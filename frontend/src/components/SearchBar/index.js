@@ -65,6 +65,22 @@ function SearchBar({}){
                 console.log( matchingReviews );
             }
         })
+        
+        // sort by restaurant (default sorting)
+        let count = 0;
+        do {
+            count = 0;
+            for (let i = 0; i < matchingReviews.length - 1; i++) {
+                if (matchingReviews[i].diningHall > matchingReviews[i + 1].diningHall) {
+                    let temp = matchingReviews[i];
+                    matchingReviews[i] = matchingReviews[i + 1];
+                    matchingReviews[i + 1] = temp;
+                    count++;
+                }
+            }
+        } while (count > 0);
+        
+        
         setFilteredReviews( matchingReviews );
         console.log( filteredReviews );
     }
