@@ -82,13 +82,29 @@ function allReviews(){
 
 
 //Displays all of the components onto the page
+//Gives Description of the restaurant
 var Background;
-if( name === "De Neve" )
+var description;
+var link;
+var linkText;
+if( name === "De Neve" ) {
   Background = DNBackground;
-else if( name === "Bruin Plate" )
+    description = "Specializing in cuisine of the Americas.";
+    link = "https://portal.housing.ucla.edu/dining-locations/de-neve";
+    linkText = "See what De Neve has to offer.";
+}
+else if( name === "Bruin Plate" ) {
   Background = BPBackground;
-else if( name === "Epicuria" )
+    description = "A leader in healthy, sustainable and mindful eating.";
+    link = "https://portal.housing.ucla.edu/dining-locations/bruin-plate";
+    linkText = "Learn more about Bruin Plate";
+}
+else if( name === "Epicuria" ) {
   Background = EBackground;
+    description = "Simple, delicious Mediterranean meals.";
+    link = "https://portal.housing.ucla.edu/dining-locations/epicuria-covel";
+    linkText = "Read more about Epicuria at Covel";
+}
 return(
   <div className="display">
     <div className={name} style={{
@@ -104,9 +120,11 @@ return(
         <h4 className="rating">Overall Rating: {averageRating} Stars </h4>
         <StarsRating disabled={true} value={averageRating} className={"stars"} />
       </div>
+      <div className="descriptionBox">
+       <p className="description">{description}</p>
+       <a href={link} className="descriptionLink" target="_blank">{linkText}</a>
+      </div>
       <p>{allReviews()}</p>
-      
-     
     </div>
    </div>
 
