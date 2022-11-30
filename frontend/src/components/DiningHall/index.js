@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-//want this to display some information about the dining hall
-//and display all reviews for De Neve
-//TODO: Change this to a component for all 3 dining halls, where just title and which reviews show changes
+//Displays all of the reviews for a dining Hall
+
 import './diningHall.css'
 import StarsRating from 'react-star-rate';
 import DNBackground from '../DiningHall/assets/DeNeveMain.jpeg'
@@ -40,7 +39,6 @@ function DiningHall(props){
           }
        
         const reviews = await response.json();
-        // console.log(reviews); //used for debugging
         
         // Reviews should be sorted from highest to lowest rating
         var tempReviews = reviews;

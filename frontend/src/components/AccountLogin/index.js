@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"; 
-import { Link } from 'react-router-dom';
+import React, { useState } from "react"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
@@ -104,7 +103,7 @@ function AccountLogin(_){
             setTitle("Welcome");
             setBody("");
 
-            sessionStorage.setItem('user', newUser.user); //not sure if data.name is a string, might need to stringify
+            sessionStorage.setItem('user', newUser.user); 
             //other components should be able to check if the user is logged in and get their name with getItem
             sessionStorage.setItem('userLoggedIn','true');
             

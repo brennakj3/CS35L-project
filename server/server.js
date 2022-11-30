@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-var bodyParser = require('body-parser');
 app.use(express.json());
 app.use(cors());
 require("dotenv").config({ path: "../config.env"}); //dotenv is used to access .env variables in a file
@@ -24,8 +23,7 @@ mongoose.connection.on('connected', ()=>{
 //Importing the models for the MongoDB database
 const reviewModel = require("./schema/review");
 const userModel = require("./schema/user");
-const diningModel = require("./schema/restaurant");
-const response  = require("express");
+
 
 //Some basic route methods from express documentation page, each one should access some mongoose model and do something to it to edit database
 //React frontend makes a http request and then the server sees it and responds with one of these actions
@@ -69,7 +67,7 @@ app.post('/createReview', async (req, res) => {
         body: req.body.body,
         diningHall: req.body.diningHall,
         rating: req.body.rating,
-    }); //this might be to be split up more specifically
+    });
     try {
         await review.save();
         res.send(review);

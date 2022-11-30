@@ -12,10 +12,7 @@ import './reviewForm.css'
 
 
 /*ReviewForm is the form the user can fill out to make a new post */
-/*TODO: g ive user a notification their review was posted 
-Need to implement star ranking, might want to install another package for that (mdbreact maybe)
-Need to fix styling, text box and option select shouldn't fill page 
-Need to implement actually signup/login, then add username being retrieved from current user*/
+
 function ReviewForm(_){
   const navigate = useNavigate();
   const [reviewData, setReviewData] = useState({   
@@ -75,7 +72,7 @@ function ReviewForm(_){
   
   
   
-
+  //Modal that shows up if a user has not logged in yet
   function LoginModal(){
     return (
       <Modal show = {showLoginModal} onHide={()=>setShowLoginModal(false)} >
@@ -96,6 +93,7 @@ function ReviewForm(_){
   
     );
   }
+  //Alert that shows up when user posts a review
   function PostAlert(){
     return(
       <div class="alert">
@@ -110,6 +108,7 @@ function ReviewForm(_){
     return (
       <>
       <div class="post">
+      <h3 id = "reviewTitle" class="title">Write a Review </h3>
       <LoginModal />
       <Form>
       <Form.Group controlID="diningSelect">

@@ -12,9 +12,6 @@ import SearchBar from './components/SearchBar'
 //App handles all major routing to other webpages to display React pages
 
 function App() {
-  //TODO: Add routing to other pages, currently Epicuria and Bruin plate don't go anywhere
-  //The <Route path="" element={} /> sections add routing to a react component by webpage url
-  //E.x "/" just routes to the home page of localhost
   return (
     <div>
     <TopNavbar /> 
