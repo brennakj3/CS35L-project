@@ -3,27 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./searchBar.css"
 import Review from '../Review'
 import {Search} from 'react-bootstrap-icons'
-// async function getReviews( reviews ) {
-//     const deNeve=  "De Neve";
-//     const bPlate = "Bruin Plate"
-//     const epicuria = "Epicuria"
-//     //makes http request to server to get all the dining hall reviews from this dining hall from the database
-//     const response = await fetch(`http://localhost:5000/getReviews/${deNeve}`); //TODO: Implement the same logic for other dining halls once reviews are accessible
-//     //some feedback for a fetching error 
-//     if (!response.ok) {
-//         const message = `An error occurred: ${response.statusText}`;
-//         console.log(message);
-//         return;
-//       }
-   
-//     reviews = await response.json();
-//     console.log(reviews); //used for debugging
-//     var totalRatings =0;
-//     var numReviews=0;
-// }   
-
-// console.log( "here" );
-// console.log( reviews );
 
 function SearchBar({}){
     const placeholder = "Search for a review...";
