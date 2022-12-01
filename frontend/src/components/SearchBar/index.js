@@ -51,6 +51,11 @@ function SearchBar({}){
 }, []);
     const handleInput = ( event ) => {
         var enteredWord = event.target.value;
+        if( enteredWord == '' )
+        {
+            setFilteredReviews( [] );
+            return;
+        }
         var matchingReviews = [];
         reviews.map(( review ) => {
             var currentReviewBody = review.body;
@@ -85,7 +90,7 @@ function SearchBar({}){
         console.log( filteredReviews );
     }
     function showReviews(){
-        if (filteredReviews.length !== 0 && filteredReviews.length !== reviews.length){
+        if (filteredReviews.length !== 0){
         return filteredReviews.map( ( review ) =>{
             return(
                 <div>
