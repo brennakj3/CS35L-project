@@ -1,5 +1,5 @@
-# CS35L-project
-Web application for reviewing and ranking UCLA dining halls
+# UCLA Dining Hall Review App
+Web application where UCLA students can review and rank UCLA dining halls
 
 
 ### Setting up MongoDB: ###
